@@ -12,9 +12,9 @@ for i in range(3, 4):
 
 Python Code (Example 2)?
 
-~~~
+```python
 for i in range(3, 4):
-	print(i)
-~~~
+    print(i)
+```
 
 A
