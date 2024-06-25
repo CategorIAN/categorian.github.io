@@ -5,6 +5,7 @@ kramdown:
       line_numbers: true
     span:
       line_numbers: true
+    default_lang: python
 
 collections:
   authors:
