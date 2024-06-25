@@ -1,5 +1,5 @@
 ---
-title: "Displaying code in Jekyll"
+title: "Displaying code in Jekyll (According To Rachel)"
 tags: 
 - Jekyll
 - Liquid
