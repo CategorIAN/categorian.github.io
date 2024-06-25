@@ -1,11 +1,6 @@
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
-    span:
-      line_numbers: true
-    default_lang: python
+# Conversion markdown: redcarpet 
+highlighter: pygments 
+redcarpet: extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 
 collections:
   authors:
