@@ -1,3 +1,11 @@
+.highlight {
+    background: rgb(230, 230, 230);
+    max-height: 300px;
+    overflow: scroll;
+    border: 1px #C1C1C1;
+    border-radius: 3px;
+}
+
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
