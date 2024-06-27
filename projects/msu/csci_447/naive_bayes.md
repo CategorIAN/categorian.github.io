@@ -1,5 +1,6 @@
 ---
 title: "CSCI 447 Project 1: Naive Bayes"
+layout: default
 ---
 
 <h1>References</h1>
