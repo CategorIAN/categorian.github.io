@@ -7,10 +7,10 @@ layout: practice
 
 <a>Hello World!</a>
 
-```js
+{%highlight python linenos%}
 // Javascript code with syntax highlighting.
 var fun = function lang(l) {
   dateformat.i18n = require('./lang/' + l)
   return true;
 }
-```
+{%endhighlight%}
