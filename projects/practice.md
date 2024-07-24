@@ -7,7 +7,7 @@ layout: practice
 
 <a>Hello World!</a>
 
-<code>
+{% highlight python linenos %}
 for i in range(4, 6):
   print(i)
-</code>
+{% endhighlight %}
