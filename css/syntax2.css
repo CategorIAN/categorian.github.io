@@ -1,3 +1,7 @@
 p {
-font-size: 20px;
+  font-size: 20px;
+}
+
+a {
+  color: blue;
 }
