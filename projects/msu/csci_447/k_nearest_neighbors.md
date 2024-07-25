@@ -5,7 +5,7 @@ layout: default
 
 <h1>References</h1>
 <a href = "https://github.com/EthanSkelton9/csci447_project2">Code Repository</a>\
-[Full Report](https://categorian.github.io/pdfs/CSCI_447_Project_1.pdf)
+[Full Report](https://categorian.github.io/pdfs/CSCI_447_Project_2.pdf)
 
 <h1>Description</h1>
 
