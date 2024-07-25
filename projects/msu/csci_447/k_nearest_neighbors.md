@@ -1,5 +1,5 @@
 ---
-title: "CSCI 447 Project 2: K Nearest Neighbors"
+title: "CSCI 447 Project 2: K Nearest Neighbor Classifier"
 layout: default
 ---
 
@@ -10,79 +10,85 @@ layout: default
 <h1>Description</h1>
 
 <p>
-For my first project in my Machine Learning course, my partner, Ethan Skelton, and I focused on creating a Naive Bayes supervised learning model. Our algorithm trains a model using a real world data set to predict the class of examples from the same data set. The examples used to train the model make up the training data, and the examples that had their classes predicted from the model make up the test data. The assignment of training data and test data for any given data set was created from 10-fold cross validation. 
+For my second project in my Machine Learning course, my partner, Ethan Skelton, and I created a K Nearest Neighbor supervised learning model. Our algorithm trains a model using a real world data set to predict the class of examples from the same data set. The examples used to train the model make up the training data, and the examples that had their classes predicted from the model make up the test data. The assignment of training data and test data for any given data set was created from 10-fold cross validation. 
 </p>
 
-<h2>Naive Bayes Model</h2>
-
+<h1>K-Nearest Neighbor Classifier</h1>
 <p>
-For a given training set, for each class, we computed
-\[
-Q(C=c_i) = \dfrac{\#\{\textbf{x}\in c_i\}}{N},
-\]
-where \(N\) is the number of examples in the training set. The code to implement our <i>Q</i> values is shown below:
-{%highlight python linenos%}
-#probability of the class
-def getQ(self):
-        df = pd.DataFrame(self.train_set.groupby(by = ['Class'])['Class'].agg('count')).rename(columns =
-                                                                                               {'Class': 'Count'})
-        df['Q'] = df['Count'].apply(lambda x: x / self.train_set.shape[0])
-        return df
-{%endhighlight%}
-  
-  
-Then, for each attribute and each class, we calculate, 
-\[
-F(A_j = a_k, C=c_i) = \dfrac{\#\{(\textbf{x}_{A_j} = a_k) \wedge (\textbf{x} \in c_i)\} +1}{N_{c_i} + d},
-\]
-which was computed with the following code:
-{%highlight python linenos%}
-#probability of a sigle feature 
-    def getF(self, j, m, p, Qtrain = None): 
-        if Qtrain is None: Qtrain = self.getQ()
-        df = pd.DataFrame(self.train_set.groupby(by = ['Class', self.features[j]])['Class'].agg('count')).rename(
-                                                                                        columns = {'Class' : 'Count'})
-        y = []
-        for ((cl, _), count) in df['Count'].to_dict().items():
-            y.append((count + 1 + m*p)/(Qtrain.at[cl, 'Count'] + len(self.features) + m)) 
-        df['F'] = y
-        return df
-{%endhighlight%}
+Hello World
+{%highlight python %}
+'''
+nnEstimator returns a function that predicts the target of an example using k nearest neighbors
+@param train_set - the set that we will use for our neighbors
+@param k - the number of neighbors we will use to predict an example
+@param sigma - the band width only used in regression sets
+@param epsilon - the max tolerance used to determine if two regression examples have the same target for editing
+@param edit - determines whether to use edited nearest neighbors or not
+@param test_set - test set used to determine whether the edited neighbors improves performance
+@return function that takes @param example x and returns predicted class or target value
+'''
+def nnEstimator(self, train_set, k, sigma = None, epsilon = None, edit = False, test_set = None, start_time = None):
+if start_time is not None:
+    if time.time() - start_time > 60 * 5:
+        raise RuntimeError("Time is past 5 minutes.")
+train_set_values = train_set.index.to_series().map(lambda i: self.value(train_set, i))
+def nn_estimate_by_value(x):
+    # print("--------------------")
+    #print("New x to estimate")
+    x_vec = x.to_numpy()
+    #print("Computing Distances:")
+    distances = train_set_values.map(lambda y: math.sqrt((x_vec - y.to_numpy()).dot(x_vec-y.to_numpy())))
+    #print("Distances Computed")
+    # print("Number of distances is {}".format(len(distances)))
+    if k < len(distances):
+        #print("Distances Number: {}".format(len(distances)))
+        dist_sorted = distances.sort_values()
+        #print("Sorted Distances Number: {}".format(len(dist_sorted)))
+        dist_sorted = dist_sorted.take(range(k))
+    else:
+        dist_sorted = distances.sort_values()
+    #print("Sorted Distances")
+    nn = dist_sorted.index
+    if self.classification:
+        #print("Creating Train Frame")
+        w = train_set.filter(items = nn, axis=0).groupby(by = ['Target'])['Target'].agg('count')
+        count = lambda cl: w.at[cl] if cl in w.index else 0
+        #print("Returning Class")
+        return rd(lambda cl1, cl2: cl1 if count(cl1) > count(cl2) else cl2, self.classes)
+    else:
+        def kernel(u):
+            return math.exp(-math.pow(u, 2) / sigma)
+        v = dist_sorted.map(kernel).to_numpy()
+        r = nn.map(lambda i: train_set.at[i, 'Target'])
+        return v.dot(r)/v.sum()
 
-Then, to classify an example from the test set, we compute 
-\[
-C(\textbf{x}) = Q(C = c_i)\times \prod_{j=1}^{d} F(A_j = a_k, C=c_i),
-\]
-which was computed with the code:
-{%highlight python%}
-#Calculate the probabilities of the class based on the features
-    def C(self, cl, x, Qtrain = None, Ftrains = None):
-        if Qtrain is None: Qtrain = self.getQ()
-        if Ftrains is None: Ftrains = self.getFs(Qtrain)
-        result = Qtrain.at[cl, 'Q']
-        for j in range(len(self.features)):
-            F = Ftrains[j]
-            if (cl, x[j]) in F.index:
-                result = result * F.at[(cl, x[j]), 'F']
-            else: return 0
-        return result
-{%endhighlight%}
-Then, we return 
-\[
-class(\textbf{x}) = argmax_{c_i\in C}C(x),
-\]
-which returns the class with the highest value for C(<b>x</b>). The function that predicted the class of an example with features <b>x</b> is shown here:
-{%highlight python%}
-#predict the class value
-    def predicted_class(self, x, Qtrain = None, Ftrains = None):
-        if Qtrain is None: Qtrain = self.getQ()  #create class if not there
-        if Ftrains is None: Ftrains = self.getFs(Qtrain)  #create feature set if not there
-        (argmax, max_C) = (None, 0) 
-        for cl in Qtrain.index:
-            y = self.C(cl, x, Qtrain, Ftrains)
-            if y > max_C:
-                argmax = cl
-                max_C = y
-        return argmax
-{%endhighlight%}
+        if edit:
+            def correctly_classified(i):
+                #print("Testing Neighbors on Themselves")
+                target = self.nnEstimator(train_set.drop([i]), k, sigma=sigma, start_time=start_time)(self.value(train_set, i))
+                #print("Target is {}".format(target))
+                if self.classification:
+                    return target == train_set.at[i, 'Target']
+                else:
+                    return abs(target - train_set.at[i, 'Target']) < epsilon
+        
+            yes = train_set.index.map(correctly_classified)
+            no = yes.map(lambda y: not y)
+        
+            edited_neighbors = train_set.loc[train_set.index.map(correctly_classified)]
+            print("Edited Out: {}".format(train_set.loc[no]))
+            #print("Found Edited Neighbors")
+            if train_set.shape[0] != edited_neighbors.shape[0]:
+                #print("It is a smaller set.")
+                pred_func = lambda set: self.comp(self.nnEstimator(set, k, sigma, start_time=start_time), pf(self.value, test_set))
+                #print("Old Predictions")
+                old_pred = test_set.index.map(pred_func(train_set))
+                #print("New Predictions")
+                new_pred = test_set.index.map(pred_func(edited_neighbors))
+                actual = test_set['Target']
+                if self.evaluator(old_pred, actual) >= self.evaluator(new_pred, actual):
+                    #print("Recursively Edit Again")
+                    return self.nnEstimator(edited_neighbors, k, sigma, epsilon, True, test_set, start_time)
+        return nn_estimate_by_value
+{%end highlight%}
 </p>
