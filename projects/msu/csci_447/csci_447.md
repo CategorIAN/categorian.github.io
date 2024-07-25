@@ -12,3 +12,7 @@ For my machine learning course, my partner Ethan Skelton and I worked on four pr
 <h2>Classification Data Sets</h2>
 * <a href = "https://archive.ics.uci.edu/dataset/15/breast+cancer+wisconsin+original">Breast Cancer</a>
 
+* <a href = "https://archive.ics.uci.edu/dataset/42/glass+identification">Glass</a>
+
+
+
