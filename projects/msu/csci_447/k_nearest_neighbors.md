@@ -48,6 +48,7 @@ def kernel(u):
 v = dist_sorted.map(kernel).to_numpy()
 r = nn.map(lambda i: train_set.at[i, 'Target'])
 return v.dot(r)/v.sum()
+{%endhighlight%}
 
 The weights are determined by the Gaussian Kernel Function:
 \[K(u) = \exp{[-\frac{u^2}{\sigma}]},\]
