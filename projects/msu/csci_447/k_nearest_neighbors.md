@@ -14,25 +14,19 @@ For my second project in my Machine Learning course, my partner, Ethan Skelton, 
 </p>
 
 <h2>K-Nearest Neighbor Classifier</h2>
-<p>
-Hello World
-{%highlight python linenos%}
-'''
-nnEstimator returns a function that predicts the target of an example using k nearest neighbors
-@param train_set - the set that we will use for our neighbors
-@param k - the number of neighbors we will use to predict an example
-@param sigma - the band width only used in regression sets
-@param epsilon - the max tolerance used to determine if two regression examples have the same target for editing
-@param edit - determines whether to use edited nearest neighbors or not
-@param test_set - test set used to determine whether the edited neighbors improves performance
-@return function that takes @param example x and returns predicted class or target value
-'''
-{%endhighlight%}
-</p>
 
 <p>
 Given an example to classify, <em>x</em>, we compute the distance of each training example, <em>y</em> from <em>x</em> using the Euclidean norm:
 {%highlight python linenos%}
 distances = train_set_values.map(lambda y: math.sqrt((x_vec - y.to_numpy()).dot(x_vec-y.to_numpy())))
+{%endhighlight%}
+</p>
+
+<p>
+We then sort the distances and take the <em>k</em> shortest distances.
+
+{%highlight python linenos%}
+dist_sorted = distances.sort_values()
+dist_sorted = dist_sorted.take(range(k))
 {%endhighlight%}
 </p>
