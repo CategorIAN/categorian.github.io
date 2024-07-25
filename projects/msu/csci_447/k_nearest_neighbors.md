@@ -27,7 +27,7 @@ nnEstimator returns a function that predicts the target of an example using k ne
 @param test_set - test set used to determine whether the edited neighbors improves performance
 @return function that takes @param example x and returns predicted class or target value
 '''
-{%end highlight%}
+{%endhighlight%}
 </p>
 
 <p>
