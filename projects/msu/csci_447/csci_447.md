@@ -20,7 +20,7 @@ The data sets were from the <a href = "https://archive.ics.uci.edu/datasets">UC 
 
 * <a href = "https://archive.ics.uci.edu/dataset/91/soybean+small">Soybean (small)</a>
 
-* <a href = "https://archive.ics.uci.edu/dataset/105/congressional+voting+records"Vote</a>
+* <a href = "https://archive.ics.uci.edu/dataset/105/congressional+voting+records">Vote</a>
 
 
 
