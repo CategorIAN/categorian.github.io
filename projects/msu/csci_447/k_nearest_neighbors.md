@@ -52,6 +52,6 @@ return v.dot(r)/v.sum()
 
 The weights are determined by the Gaussian Kernel Function:
 \[K(u) = \exp{[-\frac{u^2}{\sigma}]},\]
-where sigma is a hyperparameter to be tuned. 
+where \(\sigma\) is a hyperparameter to be tuned. 
 </p>
 
