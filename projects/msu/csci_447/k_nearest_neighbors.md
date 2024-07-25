@@ -32,10 +32,25 @@ dist_sorted = dist_sorted.take(range(k))
 </p>
 
 <p>
-If the data is a classification set, we determine the class of <em>x</em> to be the most popular class among the k nearest neighbors of <em>x</em>
+If the data is a classification set, we determine the class of <em>x</em> to be the most popular class among the k nearest neighbors of <em>x</em>:
 {%highlight python linenos%}
 w = train_set.filter(items = nn, axis=0).groupby(by = ['Target'])['Target'].agg('count')
 count = lambda cl: w.at[cl] if cl in w.index else 0
 return rd(lambda cl1, cl2: cl1 if count(cl1) > count(cl2) else cl2, self.classes)
 {%endhighlight%}
 </p>
+
+<p>
+However, if the data is a regression set, we determine the target value of the <em>x</em> by a weighted average of the targets of its k nearest neighbors:
+{%highlight python linenos%}
+def kernel(u):
+    return math.exp(-math.pow(u, 2) / sigma)
+v = dist_sorted.map(kernel).to_numpy()
+r = nn.map(lambda i: train_set.at[i, 'Target'])
+return v.dot(r)/v.sum()
+
+The weights are determined by the Gaussian Kernel Function:
+\[K(u) = \exp{[-\frac{u^2}{\sigma}]},\]
+where sigma is a hyperparameter to be tuned. 
+</p>
+
