@@ -1,8 +1,12 @@
+markdown: kramdown
+highlighter: rouge
 kramdown:
+  input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     block:
       line_numbers: true
+      start_line: 1
     span:
       line_numbers: true
 
@@ -11,11 +15,6 @@ collections:
     output: true
 
 defaults:
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
   - scope:
       path: ""
       type: "posts"
