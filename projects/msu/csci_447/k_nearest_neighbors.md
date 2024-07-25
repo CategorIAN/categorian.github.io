@@ -30,3 +30,12 @@ dist_sorted = distances.sort_values()
 dist_sorted = dist_sorted.take(range(k))
 {%endhighlight%}
 </p>
+
+<p>
+If the data is a classification set, we determine the class of <em>x</em> to be the most popular class among the k nearest neighbors of <em>x</em>
+{%highlight python linenos%}
+w = train_set.filter(items = nn, axis=0).groupby(by = ['Target'])['Target'].agg('count')
+count = lambda cl: w.at[cl] if cl in w.index else 0
+return rd(lambda cl1, cl2: cl1 if count(cl1) > count(cl2) else cl2, self.classes)
+{%endhighlight%}
+</p>
