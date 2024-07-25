@@ -29,3 +29,10 @@ nnEstimator returns a function that predicts the target of an example using k ne
 '''
 {%end highlight%}
 </p>
+
+<p>
+Given an example to classify, <em>x</em>, we compute the distance of each training example, <em>y</em> from <em>x</em> using the Euclidean norm:
+{%highlight python%}
+distances = train_set_values.map(lambda y: math.sqrt((x_vec - y.to_numpy()).dot(x_vec-y.to_numpy())))
+{%endhighlight%}
+</p>
