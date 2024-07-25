@@ -16,7 +16,7 @@ The data sets were from the <a href = "https://archive.ics.uci.edu/datasets">UC 
 
 * <a href = "https://archive.ics.uci.edu/dataset/42/glass+identification">Glass</a>
 
-* <a href = "https://archive.ics.uci.edu/dataset/53/iris>Iris</a>
+* <a href = "https://archive.ics.uci.edu/dataset/53/iris">Iris</a>
 
 * <a href = "https://archive.ics.uci.edu/dataset/91/soybean+small">Soybean (small)</a>
 
