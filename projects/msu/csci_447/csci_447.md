@@ -22,5 +22,13 @@ The data sets were from the <a href = "https://archive.ics.uci.edu/datasets">UC 
 
 * <a href = "https://archive.ics.uci.edu/dataset/105/congressional+voting+records">Vote</a>
 
+<h3>Regression Data Sets</h3>
+
+* <a href = "https://archive.ics.uci.edu/dataset/1/abalone">Abalone</a>
+
+* <a href = "https://archive.ics.uci.edu/dataset/29/computer+hardware">Computer Hardware</a>
+
+* <a href = "https://archive.ics.uci.edu/dataset/162/forest+fires">Forest Fires</a>
+
 
 
