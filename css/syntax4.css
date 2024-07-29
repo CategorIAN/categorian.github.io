@@ -1,0 +1,5 @@
+/* I want my code blocks to scroll */
+
+.highlight {
+    overflow: scroll;
+}
