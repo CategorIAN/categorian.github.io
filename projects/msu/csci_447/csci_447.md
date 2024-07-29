@@ -33,7 +33,9 @@ The data sets were from the <a href = "https://archive.ics.uci.edu/datasets">UC 
 
 <h2>Experimental Design</h2>
 <h3>10-Fold Cross Validation</h3>
+<p>
 For each project, we used 10-Fold Cross Validation to evaluate our model. For this method, we partitioned our data set \(S\) into 10 equally sized subsets \(\union_{i=1}^{10} S_i = S\). Then, for each of the 10 folds, we calculate the error of fold i, \(E_i\), by training our model on \(\union_{i\neq} S_i\) and calculating the error on the prediction of our model on the test set \(S_i\). Then, the error of our model is calcuated as the mean of \(\{E_i | i \in [1..10]\}\).
+</p>
 
 
 
