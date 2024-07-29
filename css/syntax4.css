@@ -1,6 +1,8 @@
 /* I want my code blocks to scroll */
 
 .highlight {
-    max-height: 15px;
+    max-height: 300px;
     overflow: scroll;
+    border: 1px #C1C1C1;
+    border-radius: 3px;
 }
