@@ -1,5 +1,6 @@
 ---
 title: CSCI 447 Projects
+layout: default
 ---
 
 <h1>"CSCI 447: Machine Learning" Projects</h1>
