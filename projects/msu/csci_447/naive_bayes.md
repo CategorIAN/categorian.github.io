@@ -2,13 +2,13 @@
 title: "CSCI 447 Project 1: Naive Bayes"
 layout: default
 ---
-<title>{{page.title}}</title>
+<h1>{{page.title}}</h1>
 
-<h1>References</h1>
+<h2>References</h2>
 <a href = "https://github.com/CategorIAN/CSCI447_Project_1">Code Repository</a>\
 [Full Report](https://categorian.github.io/pdfs/CSCI_447_Project_1.pdf)
 
-<h1>Description</h1>
+<h2>Description</h2>
 
 <p>
 For my first project in my Machine Learning course, my partner, Ethan Skelton, and I focused on creating a Naive Bayes supervised learning model. Our algorithm trains a model using a real world data set to predict the class of examples from the same data set. The examples used to train the model make up the training data, and the examples that had their classes predicted from the model make up the test data. The assignment of training data and test data for any given data set was created from 10-fold cross validation. 
