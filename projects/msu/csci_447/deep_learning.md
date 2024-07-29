@@ -59,4 +59,5 @@ for (w, z) in list(wzs)[::-1]:
 new_ws = pd.Series(zip(ws, grads)).map(lambda wg: wg[0] + eta * wg[1])           #calculate new weights
 new_ss = None if ss is None else grads                                        #calculate new gradients
 return f.tail_call(index_remaining[1:], new_ws, new_ss, y_acc + [(i, yi)])
+{%endhighlight%}
 </p>
