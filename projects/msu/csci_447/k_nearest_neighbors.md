@@ -1,5 +1,5 @@
 ---
-title: "CSCI 447" Project 2: K Nearest Neighbor Classifier
+title: "CSCI 447 Project 2: K Nearest Neighbor Classifier"
 layout: default
 ---
 <h1>{{page.title}}</h1>
