@@ -46,7 +46,8 @@ def calc_Hidden(self, weights, row, num_hidden):
 </p>
 
 <p>
-We trained our neural network using gradient descent and backpropagation. 
+We trained our neural network using gradient descent and backpropagation.
+
 {%highlight python linenos%}
 error = np.array([r(i) - yi])                                     # return errors at each of the outputs
 grads = []
