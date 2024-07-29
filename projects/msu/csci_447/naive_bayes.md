@@ -2,6 +2,8 @@
 title: "CSCI 447 Project 1: Naive Bayes"
 layout: default
 ---
+<title>{{page.title}}</title>
+
 
 <h1>References</h1>
 <a href = "https://github.com/CategorIAN/CSCI447_Project_1">Code Repository</a>\
