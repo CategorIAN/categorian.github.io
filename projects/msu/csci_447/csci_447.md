@@ -9,7 +9,7 @@ layout: default
 [Project 2: K Nearest Neighbors](/k_nearest_neighbors.md)\
 [Project 3: Deep Learning](/deep_learning.md)
 
-For my machine learning course, my partner Ethan Skelton and I worked on four projects together. Each project involved creating a supervised learning model to make predictions on classes for classification sets and target values for regression sets. 
+For my machine learning course, my partner Ethan Skelton and I worked on three projects together. Each project involved creating a supervised learning model to make predictions on classes for classification sets and target values for regression sets. 
 
 <h2>The Data Sets</h2>
 The data sets were from the <a href = "https://archive.ics.uci.edu/datasets">UC Irvine Machine Learning Repository</a>.
