@@ -11,10 +11,6 @@ layout: default
 <h2>Description</h2>
 
 <p>
-For my first project in my Machine Learning course, my partner, Ethan Skelton, and I focused on creating a Naive Bayes supervised learning model. Our algorithm trains a model using a real world data set to predict the class of examples from the same data set. The examples used to train the model make up the training data, and the examples that had their classes predicted from the model make up the test data. The assignment of training data and test data for any given data set was created from 10-fold cross validation. 
-</p>
-
-<p>
 For a given training set, for each class, we computed
 \[
 Q(C=c_i) = \dfrac{\#\{\textbf{x}\in c_i\}}{N},
