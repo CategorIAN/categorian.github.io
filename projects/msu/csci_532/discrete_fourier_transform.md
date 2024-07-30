@@ -13,5 +13,5 @@ Given polynomials \(a(x)\) and \(b(x)\), we want a fast way to multiply the poly
 </p>
 
 <p>
-We want to use a divide-and-conquer method to break down a polynomial. If \(p(x) = p_0x^0 + p_1x_1 + ... + p_{n-1}x^{n-1}\), then \(p(x) = (p_0x^0 + p_2x^2 + p_4x^4 + ... ) + (p_1x^1 + p_3x^3 + p_5x^5 + ... ) = p^{[0]}(x^2) + x\cdot p^{[1]}(x^2)\), where \(p^{[0]}(x) = p_0x^0 + p_2x^1 + p_4x^2 + ...\) and \(p^{[1])(x) = a_1 + a_3x + p_5x^2 + ...\).
+We want to use a divide-and-conquer method to break down a polynomial. If \(p(x) = p_0x^0 + p_1x_1 + ... + p_{n-1}x^{n-1}\), then \(p(x) = (p_0x^0 + p_2x^2 + p_4x^4 + ... ) + (p_1x^1 + p_3x^3 + p_5x^5 + ... ) = p^{[0]}(x^2) + x\cdot p^{[1]}(x^2)\), where \(p^{[0]}(x) = p_0x^0 + p_2x^1 + p_4x^2 + ...\) and \(p^{[1]}(x) = p_1 + p_3x + p_5x^2 + ...\).
 </p>
