@@ -6,7 +6,7 @@ layout: default
 
 <h2>Reference</h2>
 <a href = "https://github.com/CategorIAN/CSCI_532_HW1">Code Repository</a>
-[Notes on Discrete Fourier Transform](https://categorian.github.io/pdfs/CSCI_447_Project_3.pdf)
+[Notes on Discrete Fourier Transform](https://categorian.github.io/pdfs/Notes on Discrete Fourier Transform.pdf)
 
 <h2>Description</h2>
 <p>
