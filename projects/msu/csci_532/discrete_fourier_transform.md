@@ -52,7 +52,7 @@ def rou(self, n, k = 1):
 {%endhighlight%}
 </p>
 
-<p>Thus, once we can express polynomials \(a(x)\) and \(b(x)\) as \(T(a)\) and \(T(b)\), respectively, we can then multiply their vectors point-wise \(T(a)*T(b)\). This vector represents the product of the original polynomials. Thus, to get the final result, we simply use the inverse transformation of \(T\), \(T^{-1}\). Thus, the product is computed by \(a(x) * b(x) = T^{-1}(T(a)*T(b))\). The following code computes this fast multiplication:
+<p>Thus, once we can express polynomials \(a(x)\) and \(b(x)\) as \(T(a)\) and \(T(b)\), respectively, we can then multiply their vectors point-wise \(T(a)*T(b)\). This vector represents the product of the original polynomials. Thus, to get the final result, we simply use the inverse transformation of \(T\), \(T^{-1}\). Thus, the product is computed by \(a(x) * b(x) = T^{-1}(T(a)*T(b))(x)\). The following code computes this fast multiplication:
 {%highlight python linenos%}
 def fast_mult(self, Q, dec = 2):
   n = self.deg + Q.deg + 1
