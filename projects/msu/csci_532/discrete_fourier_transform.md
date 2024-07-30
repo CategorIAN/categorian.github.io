@@ -31,3 +31,23 @@ def DFT(self, n = None, inv = False, dec = 2):
   return go(Q, pow(-1, int(inv)))
 {%endhighlight%}
 </p>
+
+<p>The padded function is to make sure the degree of the polynomial is a power of \(2\) so that we can always perform the recursion. 
+{%highlight python linenos%}
+def padded(self, limit = None):
+  limit = 0 if limit is None else limit
+  size = 1
+  n = self.deg + 1
+  while size < n or size < limit:
+      size = size * 2
+  return Polynomial(self.coeffs + (size - n) * [0])
+{%endhighlight%}
+</p>
+
+<p>
+The "rou" function is the \(n^{th}\) root of unity, \(\omega_n = e^{i \cdot \frac{2\pi}{n}}\).
+{%highlight python linenos%}
+def rou(self, n, k = 1):
+  return pow(exp(complex(0, 2 * pi / n)), k)
+{%endhighlight%}
+</p>
