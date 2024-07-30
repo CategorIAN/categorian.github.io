@@ -5,7 +5,7 @@ layout: default
 <h1>{{page.title}}</h1>
 
 <h2>Reference</h2>
-<a href = "https://github.com/EthanSkelton9/csci447_project3">Code Repository</a>\
+<a href = "https://github.com/CategorIAN/CSCI_532_HW1">Code Repository</a>
 
 <h2>Description</h2>
 <p>
