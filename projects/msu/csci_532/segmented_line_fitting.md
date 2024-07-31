@@ -76,3 +76,4 @@ def segmentedLeastSquares(self, cost):
 <p>
 The following are graphs of segmented line fitting with varying costs per line:</p>
 ![Image](/images/segmented_line_fitting.png)
+<img src="/images/segmented_line_fitting.png" alt="">
