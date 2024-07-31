@@ -75,5 +75,5 @@ def segmentedLeastSquares(self, cost):
 </p>
 <p>
 The following are graphs of segmented line fitting with varying costs per line:
-![Image](https://categorian.github.io//images/segmented_line_fitting.png)
+![Image](https://categorian.github.io/images/segmented_line_fitting.png)
 </p>
