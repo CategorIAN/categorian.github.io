@@ -18,7 +18,8 @@ such that
 \[
 a_{ij} = \dfrac{n\sum_{k=i}^j x_k y_k - (\sum_{k=i}^j x_k) (\sum_{k=i}^j y_k)}{n \sum_{k=i}^j x_k^2 - (\sum_{k=i}^j x_k)^2},
 \]
-b_{ij} = \dfrac{\sum_{k=i}^j y_k - a \sum_{k=i}^j x_k}{n}.
+\[
+b_{ij} = \dfrac{\sum_{k=i}^j y_k - a_{ij} \sum_{k=i}^j x_k}{n}.
 \[
 </p>
 <p>
