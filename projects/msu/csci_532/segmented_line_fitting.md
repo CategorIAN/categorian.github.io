@@ -58,7 +58,7 @@ def errorMatrix(self):
     return matrix
 {%endhighlight%}
 <p>
-Let \(c\) be the cost of adding a line. Then, \(OPT(j) = \min_{1\leq i \leq j}(e_{ij} + c + OPT(i-1)\). Thus, we can use dynamic programming to compute \(OPT(k)\) for \(k\) from \(0\) to \(n\) in increasing order. The following is code of this dynamic programming algorithm:
+Let \(c\) be the cost of adding a line. Then, \(OPT(j) = \min_{1\leq i \leq j}(e_{ij} + c + OPT(i-1))\). Thus, we can use dynamic programming to compute \(OPT(k)\) for \(k\) from \(0\) to \(n\) in increasing order. The following is code of this dynamic programming algorithm:
 {%highlight python linenos%}
 def segmentedLeastSquares(self, cost):
     def dynamicUpdate(array, j):
