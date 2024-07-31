@@ -6,6 +6,6 @@ layout: default
 
 <h2>Reference</h2>
 <a href = "https://github.com/CategorIAN/CSCI_532_HW3">Code Repository</a>\
-[Notes on Segmented Line Fitting](https://categorian.github.io/pdfs/Notes on Network Flows.pdf)
+[Notes on Network Flows](https://categorian.github.io/pdfs/Notes on Network Flows.pdf)
 
 <h2>Description</h2>
