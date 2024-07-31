@@ -20,7 +20,7 @@ a_{ij} = \dfrac{n\sum_{k=i}^j x_k y_k - (\sum_{k=i}^j x_k) (\sum_{k=i}^j y_k)}{n
 \]
 \[
 b_{ij} = \dfrac{\sum_{k=i}^j y_k - a_{ij} \sum_{k=i}^j x_k}{n}.
-\[
+\]
 </p>
 <p>
 Given a set of points \(P = \{(x_i, y_i)\}_{i=1}^n\) such that \(x_1 < x_2 < ... < x_n\) and given a line \(y = ax + b\), the error is \(\sum_{i=1}^n (y_i - ax_i-b)^2\). The line of best fit is found by
