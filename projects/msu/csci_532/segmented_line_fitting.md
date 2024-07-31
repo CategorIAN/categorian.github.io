@@ -73,3 +73,7 @@ def segmentedLeastSquares(self, cost):
     return PointPartition(self.recoverSegments(segmentArray), errorArray[self.n - 1])
 {%endhighlight%}
 </p>
+<p>
+The following are graphs of segmented line fitting with varying costs per line:
+![Image]({{site.baseurl}}/images/segmented_line_fitting.png)
+</p>
