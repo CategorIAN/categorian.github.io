@@ -23,15 +23,6 @@ b_{ij} = \dfrac{\sum_{k=i}^j y_k - a_{ij} \sum_{k=i}^j x_k}{n}.
 \]
 </p>
 <p>
-Given a set of points \(P = \{(x_i, y_i)\}_{i=1}^n\) such that \(x_1 < x_2 < ... < x_n\) and given a line \(y = ax + b\), the error is \(\sum_{i=1}^n (y_i - ax_i-b)^2\). The line of best fit is found by
-\[
-a = \dfrac{n\sum x_i y_i - (\sum x_i) (\sum y_i)}{n \sum x_i^2 - (\sum x_i)^2},
-\]
-\[
-b = \dfrac{\sum y_i - a \sum x_i}{n}.
-\]
-</p>
-<p>
 The following is code to compute this line of best fit:
 {%highlight python linenos%}
 def bestLine(self, i = 0, j = None):
@@ -41,5 +32,44 @@ def bestLine(self, i = 0, j = None):
     a = (n * x @ y - sum(x) * sum(y)) / (n * x @ x - sum(x) * sum(x))
     b = (sum(y) - a * sum(x)) / n
     return Line(a = a, b = b)
+{%endhighlight%}
+</p>
+<p>
+The following is code to compute the error of the best fit line from \(x_i\) to \(x_j\)
+{%highlight python linenos%}
+def leastSquaresError(self, i, j):
+    if i >= j:
+        return 0
+    else:
+        L = self.bestLine(i, j)
+        fitted = L.fitPoints(self.df['x'].iloc[i:j + 1])
+        resids = np.array(self.df['y'].iloc[i:j + 1] - fitted['y'])
+        return resids @ resids
+{%endhighlight%}
+</p>
+<p>
+With this, we can compute the error matrix \(e\):
+{%highlight python linenos%}
+def errorMatrix(self):
+    matrix = np.zeros((self.n, self.n))
+    for i in range(self.n):
+        for j in range(i + 1, self.n):
+            matrix[i][j] = self.leastSquaresError(i, j)
+    return matrix
+{%endhighlight%}
+<p>
+Let \(c\) be the cost of adding a line. Then, \(OPT(j) = \min_{1\leq i \leq j}(e_{ij} + c + OPT(i-1)\). Thus, we can use dynamic programming to compute \(OPT(k)\) for \(k\) from \(0\) to \(n\) in increasing order. The following is code of this dynamic programming algorithm:
+{%highlight python linenos%}
+def segmentedLeastSquares(self, cost):
+    def dynamicUpdate(array, j):
+        index_errors = [(i, errorMatrix[i][j] + cost + array[i][1]) for i in range(j + 1)]
+        minTuple = lambda t1, t2: t1 if t1[1] < t2[1] else t2
+        (index, error) = reduce(minTuple, index_errors)
+        return array + [(index, error)]
+
+    errorMatrix = self.errorMatrix()
+    tupleArray = reduce(dynamicUpdate, range(self.n), [(-1, 0)])
+    (segmentArray, errorArray) = tuple([list(t)[1:] for t in tuple(zip(*tupleArray))])
+    return PointPartition(self.recoverSegments(segmentArray), errorArray[self.n - 1])
 {%endhighlight%}
 </p>
