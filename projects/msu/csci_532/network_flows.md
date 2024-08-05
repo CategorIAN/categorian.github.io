@@ -20,4 +20,7 @@ Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z} that
   \item f(u, v) \leq c(u, v) \text{ for all }u, v \in V \text{ (capacity constraint)}
   \item f(u, v) = - f(v, u) \text{ (skew-symmetry) }
   \item \forall u \in V \backslash \{s, t\}, \sum_{v\in V} f(u, v) = 0 \text{ (conservation of flow)}
+\end{enumerate}
+\]
 </p>
+test
