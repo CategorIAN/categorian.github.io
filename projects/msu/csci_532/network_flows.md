@@ -14,7 +14,7 @@ A flow network consists of a directed graph \(G = (V, E)\) such that there exist
 </p>
 
 <p>
-Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z} that must satisfy the following constraints:
+Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z}\) that must satisfy the following constraints:
 \[
 \begin{enumerate}
   \item f(u, v) \leq c(u, v) \text{ for all }u, v \in V \text{ (capacity constraint)}
