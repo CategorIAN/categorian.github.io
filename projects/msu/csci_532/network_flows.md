@@ -20,4 +20,8 @@ Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z}\) th
 <li> \(f(u, v) = - f(v, u) \text{ (skew-symmetry) }\) </li>
 <li> \(\forall u \in V \backslash \{s, t\}, \sum_{v\in V} f(u, v) = 0 \text{ (conservation of flow)}\) </li>
 </ul>
-test A
+</p>
+
+<p>
+For \(X, Y \subseteq V), let \(f(X, Y) = \sum_{x\in X} \sum_{y \in Y} f(x, y). Then, the flow value is defined as \(|f| = f(\{s\}, V)\). 
+</p>
