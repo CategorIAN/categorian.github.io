@@ -20,4 +20,4 @@ Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z}\) th
 <li> \(f(u, v) = - f(v, u) \text{ (skew-symmetry) }\) </li>
 <li> \(\forall u \in V \backslash \{s, t\}, \sum_{v\in V} f(u, v) = 0 \text{ (conservation of flow)}\) </li>
 </ul>
-test 2
+test A
