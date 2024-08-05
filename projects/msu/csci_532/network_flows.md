@@ -27,5 +27,5 @@ For \(X, Y \subseteq V\), let \(f(X, Y) = \sum_{x\in X} \sum_{y \in Y} f(x, y)\)
 </p>
 
 <p>
-For \(f\) be a flow for graph \(G\). Then, for all \((u, v) \in V\times V\), let the residual capacity be defined as \(c_f(u, v) = c(u, v) - f(u, v)\). Let \(G_f\) be the residual network \((V, E_f)\) such that \(E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\}\)
+For \(f\) be a flow for graph \(G\). Then, for all \((u, v) \in V\times V\), let the residual capacity be defined as \(c_f(u, v) = c(u, v) - f(u, v)\). Let \(G_f\) be the residual network \((V, E_f)\) such that \(E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\}. Define an augmenting path to be any \(s, t\) path in \(G_f\). We say that \(e \in p\) is critical if \(c_f(e) = \min_{e'\in p} c_f(e').\)
 </p>
