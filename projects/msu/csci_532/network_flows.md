@@ -15,12 +15,8 @@ A flow network consists of a directed graph \(G = (V, E)\) such that there exist
 
 <p>
 Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z}\) that must satisfy the following constraints:
-\[
-\begin{enumerate}
-  \item f(u, v) \leq c(u, v) \text{ for all }u, v \in V \text{ (capacity constraint)}
-  \item f(u, v) = - f(v, u) \text{ (skew-symmetry) }
-  \item \forall u \in V \backslash \{s, t\}, \sum_{v\in V} f(u, v) = 0 \text{ (conservation of flow)}
-\end{enumerate}
-\]
+* \(f(u, v) \leq c(u, v) \text{ for all }u, v \in V \text{ (capacity constraint)}\)
+* \(f(u, v) = - f(v, u) \text{ (skew-symmetry) }\)
+* \(\forall u \in V \backslash \{s, t\}, \sum_{v\in V} f(u, v) = 0 \text{ (conservation of flow)}\)
 </p>
-test
+test 2
