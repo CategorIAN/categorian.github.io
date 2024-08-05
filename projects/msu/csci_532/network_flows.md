@@ -25,3 +25,7 @@ Furthermore, there is a flow function \(f: V\times V \rightarrow \mathbb{Z}\) th
 <p>
 For \(X, Y \subseteq V\), let \(f(X, Y) = \sum_{x\in X} \sum_{y \in Y} f(x, y)\). Then, the flow value is defined as \(|f| = f(\{s\}, V)\). Our objective is to maximize the flow value. 
 </p>
+
+<p>
+For \(f\) be a flow for graph \(G\). Then, for all \((u, v) \in V\times V\), let the residual capacity be defined as \(c_f(u, v) = c(u, v) - f(u, v)\). Let \(G_f\) be the residual network \((V, E_f)\) such that \(E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\}\)
+</p>
