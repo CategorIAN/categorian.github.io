@@ -1,5 +1,5 @@
 ---
-title: "M 508 Project 1: Linear Regression with Gradient Descent"
+title: "M 508 Project 1: Gradient Descent Linear Regression"
 layout: default
 ---
 <h1>{{page.title}}</h1>
@@ -7,6 +7,6 @@ layout: default
 <h2>Reference</h2>
 
 <a href = "https://github.com/CategorIAN/M508_HW1">Code Repository</a>\
-[Notes on Greedy Set Cover](https://categorian.github.io/pdfs/Notes on Greedy Set Cover.pdf)
+[Notes on Gradient Descent Linear Regression](https://categorian.github.io/pdfs/Notes on Greedy Set Cover.pdf)
 
 <h2>Description</h2>
