@@ -1,5 +1,5 @@
 ---
-title: "Project 1: Discrete Fourier Transform"
+title: "CSCI 532 Project 1: Discrete Fourier Transform"
 layout: default
 ---
 <h1>{{page.title}}</h1>
