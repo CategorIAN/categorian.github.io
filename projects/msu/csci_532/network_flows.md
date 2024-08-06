@@ -90,3 +90,20 @@ def augmentingPathDFS(self):
   return go(self.neighbor_edges[0].paths, {0})
 {%endhighlight%}
 </p>
+
+<p>
+However, the Edmond Karp method is a breadth first search method because the method finds a path that has the fewest number of edges. The code to find a path in a breadth first search manner is shown below:
+{%highlight python linenos%}
+def augmentingPathBFS(self):
+  def go(pathset, searched):
+      if len(pathset.paths) == 0:
+          return None
+      else:
+          finished = pathset.finishedPath()
+          if finished is not None:
+              return finished
+          else:
+              return go(*self.branch(pathset, searched))
+  return go(self.neighbor_edges[0], {0})
+{%endhighlight%}
+</p>
