@@ -56,5 +56,16 @@ def fordFulkerson(self, EdKarp, count):
 </p>
 
 <p>
-As long as there is an augmenting path, we add the path to the flow function. For example, if our current flow is \(f\), and we pick our augmenting path \(p\) in \(G_f\) with \(x=c_f(p)\) units of flow along \(p\), then we update our flow function \(f\) to be \(f(e) \leftarrow f(e) + x\) for all \(e\in p\) and \(f(e) \leftarrow f(e)\) for all \(e \notin p\).
+As long as there is an augmenting path, we add the path to the flow function. For example, if our current flow is \(f\), and we pick our augmenting path \(p\) in \(G_f\) with \(x=c_f(p)\) units of flow along \(p\), then we update our flow function \(f\) to be \(f(e) \leftarrow f(e) + x\) for all \(e\in p\) and \(f(e) \leftarrow f(e)\) for all \(e \notin p\). The following is code to augment the current flow with the flow from the augmented path:
+{%highlight python linenos%}
+def augmentFlow(self, resPath, flow = None):
+  flow = self.f if flow is None else flow
+  if resPath is None:
+      return flow
+  else:
+      signedPath = zip(resPath.path[1:], resPath.sign)
+      augment = lambda f, e, s: f|{self.direct(e, bool(s)): f[self.direct(e, bool(s))] + int(pow(-1, s)) * resPath.res}
+      augmentThrough = lambda flow_u, v_s: (augment(flow_u[0], (flow_u[1], v_s[0]), v_s[1]), v_s[0])
+      return reduce(augmentThrough, signedPath, (flow, 0))[0]
+{%endhighlight%}
 </p>
