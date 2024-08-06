@@ -1,5 +1,5 @@
 ---
-title: "Project 3: Network Flows"
+title: "CSCI 532 Project 3: Network Flows"
 layout: default
 ---
 <h1>{{page.title}}</h1>
