@@ -13,6 +13,6 @@ layout: default
 <p>
 For each example \(x^{(i)}\), let our feature vector be \([x_1^{(i)}, x_2^{(i)}, ..., x_d^{(i)}] \in \mathbb{R}^d\), \(x_0^{(i)} = 1\), and our target value be \(y^{(i)}\). Then, let \(x^{(i)} = [x_0^{(i)}, x_1^{(i)}, ..., x_d^{(i)}] \in \mathbb{R}^{d+1}\), and let our linear regression weights be \(\theta \in \mathbb{R}^{d+1}\). Then, our hypothesis function is defined to be \(h_{\theta}(x^{(i)}) = \sum_{j=0}^{d+1} \theta_j x_j^{(i)} = \theta^{\intercal} x^{(i)} = \theta \cdot x^{(i)}\). We want to train our regression weights \(\theta\) by minimizing the loss function
 \[
-J(\theta) = \frac{1}{2} \sum_{i=1}^n (h_{\theta}(x^{(i)}) - y^{(i)})^2
+J(\theta) = \frac{1}{2} \sum_{i=1}^n (h_{\theta}(x^{(i)}) - y^{(i)})^2.
 \]
 </p>
