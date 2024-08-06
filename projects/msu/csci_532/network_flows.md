@@ -69,3 +69,24 @@ def augmentFlow(self, resPath, flow = None):
       return reduce(augmentThrough, signedPath, (flow, 0))[0]
 {%endhighlight%}
 </p>
+
+<p>
+Looking at the "fordFulkerson" function, we see that if "EdKarp" is false, the algorithm performs a depth first search to find an augmenting path. The code to find a path in a depth first search manner is shown below:
+{%highlight python linenos%}
+def augmentingPathDFS(self):
+  @tail
+  def go(pathlist, searched):
+      #print("%%%%%%%%%%")
+      #print("Paths: {}".format(PathSet(pathlist, sort = False)))
+      if len(pathlist) == 0:
+          return None
+      else:
+          path = pathlist[0]
+          if path.isDone():
+              return path
+          else:
+              newPaths = self.neighbor_paths(path, searched).paths
+              return go.tail_call(newPaths + pathlist[1:], searched.union({path.head}))
+  return go(self.neighbor_edges[0].paths, {0})
+{%endhighlight%}
+</p>
