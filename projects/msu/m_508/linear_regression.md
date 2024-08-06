@@ -16,3 +16,18 @@ For each example \(x^{(i)}\), let our feature vector be \([x_1^{(i)}, x_2^{(i)},
 J(\theta) = \frac{1}{2} \sum_{i=1}^n (h_{\theta}(x^{(i)}) - y^{(i)})^2.
 \]
 </p>
+
+<p>
+Code that calculates this error is shown below:
+{%highlight python linenos%}
+def J(self, X, Y, theta):
+    '''
+    :param X: data matrix of predictors
+    :param Y: target vector
+    :param theta: vector of regression weights
+    :return: the error of the regression model
+    '''
+    v = theta[0] + X @ theta[1:] - Y
+    return 0.5 * np.dot(v.T, v)[0][0]
+{%endhighlight%}
+</p>
