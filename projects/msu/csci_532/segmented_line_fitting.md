@@ -1,5 +1,5 @@
 ---
-title: "Project 2: Segmented Line Fitting"
+title: "CSCI 532 Project 2: Segmented Line Fitting"
 layout: default
 ---
 <h1>{{page.title}}</h1>
