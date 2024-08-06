@@ -1,5 +1,5 @@
 ---
-title: "Project 4: Greedy Set Cover"
+title: "CSCI 532 Project 4: Greedy Set Cover"
 layout: default
 ---
 <h1>{{page.title}}</h1>
