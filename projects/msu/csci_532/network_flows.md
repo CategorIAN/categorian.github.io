@@ -5,10 +5,12 @@ layout: default
 <h1>{{page.title}}</h1>
 
 <h2>Reference</h2>
+
 <a href = "https://github.com/CategorIAN/CSCI_532_HW3">Code Repository</a>\
 [Notes on Network Flows](https://categorian.github.io/pdfs/Notes on Network Flows.pdf)
 
 <h2>Description</h2>
+<h3>Flow Networks</h3>
 <p>
 A flow network consists of a directed graph \(G = (V, E)\) such that there exists \(s, t \in V\), where \(s\) is the source and \(t\) is the sink. Furthermore, there is a capacity function \(c: V\times V \rightarrow \mathbb{Z}^+\) such that \(c(u, v) = 0\) for all \((u, v) \notin E \).
 </p>
@@ -33,4 +35,26 @@ For \(f\) be a flow for graph \(G\). Then, for all \((u, v) \in V\times V\), let
 <h3>The Ford-Fulkerson Algorithm</h3>
 <p>
 We start with \(f=0\). While there exists an augmenting path \(p\) in \(G_f\), add \(c_f(p)\) units of flow along \(p\). Return flow \(f\). It can be shown that \(f\) is a max flow for graph \(G\).
+</p>
+
+<p>The following is code for the Ford-Fulkerson Algorithm:
+{%highlight python linenos%}
+def fordFulkerson(self, EdKarp, count):
+  @tail_recursive
+  def go(flow, i):
+      resNetwork = ResidualNetwork(self, flow)
+      resPath = resNetwork.augmentingPathBFS() if EdKarp else resNetwork.augmentingPathDFS()
+      print("++++++++++++++++++++++++++++++")
+      print("ResPath: {}".format(resPath))
+      print("++++++++++++++++++++++++++++++")
+      if resPath is None:
+          return (flow, i) if count else flow
+      else:
+          return go.tail_call(resNetwork.augmentFlow(resPath, flow), i + 1)
+  return go(self.initFlow(), 0)
+{%endhighlight%}
+</p>
+
+<p>
+As long as there is an augmenting path, we add the path to the flow function. For example, if our current flow is \(f\), and we pick our augmenting path \(p\) in \(G_f\) with \(x=c_f(p)\) units of flow along \(p\), then we update our flow function \(f\) to be \(f(e) \leftarrow f(e) + x\) for all \(e\in p\) and \(f(e) \leftarrow f(e)\) for all \(e \notin p\).
 </p>
