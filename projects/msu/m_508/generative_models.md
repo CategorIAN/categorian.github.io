@@ -10,3 +10,15 @@ layout: default
 [Notes on Generative Models](https://categorian.github.io/pdfs/Notes on Generative Models.pdf)
 
 <h2>Description</h2>
+<h3>Overview</h3>
+<p>
+Let \(x\) be a possible feature vector and \(y) be a possible class for a labeled data set. Then, a generative model is one that computes \(P(x|y)\) and \(P(y)\) rather than calculating \(P(y|x)\) directly as done by discriminative models. After calculating \(P(y)\) and \(P(x|y), we can calculate \(P(y|x)\) using Bayes' rule:
+\[
+P(y|x) = \dfrac{P(x|y)P(y)}{P(x)}
+\]
+</p>
+
+<p>
+If we are given training data, we calculate the probability of each class \(P(y) = \frac{\text{\# of samples of class y}}{\text{\# of samples in the data set}}}\).
+</p>
+
