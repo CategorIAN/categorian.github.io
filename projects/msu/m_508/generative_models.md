@@ -32,7 +32,7 @@ def getQ(self):
 </p>
 
 <p>
-How we compute the conditional probability \(P(x|y)\) depends on the specific model we use. The two types of generative models we will focus on are the Gaussian Discriminant Analysis (GDA) model and the Naive Bayes model. Once we calculate \(P(y)\) and \(P(x|y)\), we can get some measure of \(P(y|x)\) by computing \(P(x, y) = P(x|y)P(y)\). Looking at Bayes' rule, this is not quite \(P(y|x)\), since we are not dividing \(P(x)\). However, this probability is not important since we only need to compare probabilities. Specifically, if we are given a feature vector \(x\) from the test set, and we want to know which class among \(y_1, y_2\) is more probable, then we only need to compare \(P(x,y_1)\) and \(P(x,y_2)\) since \(P(x, y_1) < P(x, y_2) \Leftrightarrow P(y_1|x) < P(y_2|x)\)
+How we compute the conditional probability \(P(x|y)\) depends on the specific model we use. The two types of generative models we will focus on are the Gaussian Discriminant Analysis (GDA) model and the Naive Bayes model. Once we calculate \(P(y)\) and \(P(x|y)\), we can get some measure of \(P(y|x)\) by computing \(P(x, y) = P(x|y)P(y)\). Looking at Bayes' rule, this is not quite \(P(y|x)\), since we are not dividing \(P(x)\). However, this probability is not important since we only need to compare probabilities. Specifically, if we are given a feature vector \(x\) from the test set, and we want to know which class among \(y_1, y_2\) is more probable, then we only need to compare \(P(x,y_1)\) and \(P(x,y_2)\) since \(P(x, y_1) < P(x, y_2) \Leftrightarrow P(y_1|x) < P(y_2|x)\). The following code shows how to compute \(P(x, y)\) for feature vector \(x\) and class \(y\):
 {%highlight python linenos%}
 def class_prob(self, cl, x):
     '''
@@ -43,6 +43,22 @@ def class_prob(self, cl, x):
     cond_prob = self.cond_prob_func(cl, x)
     return cond_prob * self.Q.at[cl, "Q"]
 {%endhighlight%}
+</p>
 
+<p>
+Thus, with a given feature vector \(y\), we predict the class by finding that class \(y\) that yields the largest \(P(y|x)\):
+\[
+y^* = \text{argmax}_{y\in \text{Classes}} P(y|x) = \text{argmax}_{y\in \text{Classes}} P(x, y)
+\]
+The following code computes the predicted class \(y\) for a given feature vector \(x\):
+{%highlight python linenos%}
+def predicted_class(self, x):
+    '''
+    :param x: The data features.
+    :return: The class most likely having the given features
+    '''
+    cl_probs = self.Q.index.map(lambda cl: (cl, self.class_prob(cl, x)))
+    return reduce(lambda t1, t2: t2 if t1[0] is None or t2[1] > t1[1] else t1, cl_probs, (None, None))[0]
+{%endhighlight%}
 </p>
 
