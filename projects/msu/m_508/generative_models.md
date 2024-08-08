@@ -31,3 +31,18 @@ def getQ(self):
 {%endhighlight%}
 </p>
 
+<p>
+How we compute the conditional probability \(P(x|y)\) depends on the specific model we use. The two types of generative models we will focus on are the Gaussian Discriminant Analysis (GDA) model and the Naive Bayes model. Once we calculate \(P(y)\) and \(P(x|y)\), we can get some measure of \(P(y|x)\) by computing \(P(x, y) = P(x|y)P(y)\). Looking at Bayes' rule, this is not quite \(P(y|x)\), since we are not dividing \(P(x)\). However, this probability is not important since we only need to compare probabilities. Specifically, if we are given a feature vector \(x\) from the test set, and we want to know which class among \(y_1, y_2\) is more probable, then we only need to compare \(P(x,y_1)\) and \(P(x,y_2)\) since \(P(x, y_1) < P(x, y_2) \Leftrightarrow P(y_1|x) < P(y_2|x)\)
+{%highlight python linenos%}
+def class_prob(self, cl, x):
+    '''
+    :param cl: The class
+    :param x: The data features
+    :return: The probability of getting the data features and the class
+    '''
+    cond_prob = self.cond_prob_func(cl, x)
+    return cond_prob * self.Q.at[cl, "Q"]
+{%endhighlight%}
+
+</p>
+
