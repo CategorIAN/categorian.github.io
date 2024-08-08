@@ -50,7 +50,7 @@ Thus, with a given feature vector \(y\), we predict the class by finding that cl
 \[
 y^* = \text{argmax}_{y\in \text{Classes}} P(y|x) = \text{argmax}_{y\in \text{Classes}} P(x, y)
 \]
-The following code computes the predicted class \(y\) for a given feature vector \(x\):
+The following code computes the predicted class \(y^*\) for a given feature vector \(x\):
 {%highlight python linenos%}
 def predicted_class(self, x):
     '''
