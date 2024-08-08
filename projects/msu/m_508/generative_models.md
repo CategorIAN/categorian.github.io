@@ -1,5 +1,5 @@
 ---
-title: "Project 2: Generative Models"
+title: "M 508 Project 2: Generative Models"
 layout: default
 ---
 <h1>{{page.title}}</h1>
