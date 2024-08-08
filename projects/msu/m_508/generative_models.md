@@ -61,4 +61,5 @@ def predicted_class(self, x):
     return reduce(lambda t1, t2: t2 if t1[0] is None or t2[1] > t1[1] else t1, cl_probs, (None, None))[0]
 {%endhighlight%}
 </p>
+<h3>Gaussian Discriminant Analysis (GDA)</h3>
 
