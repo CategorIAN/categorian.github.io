@@ -19,6 +19,15 @@ P(y|x) = \dfrac{P(x|y)P(y)}{P(x)}
 </p>
 
 <p>
-If we are given training data, we calculate the probability of each class \(P(y) = \frac{\text{# of samples of class y}}{\text{# of samples in the data set}}\).
+If we are given training data, we calculate the probability of each class \(P(y) = \frac{\text{# of samples of class y}}{\text{# of samples in the data set}}\). We can create a dataframe that stores the probability of each class of our training data. The following code computes this dataframe:
+{%highlight python linenos%}
+def getQ(self):
+    '''
+    :return: Pandas dataframe that shows the probability of each class in the data
+    '''
+    df, target = self.data.df, self.data.target_name
+    Qframe = pd.DataFrame(df.groupby(by=[target])[target].agg("count")).rename(columns={target: "Count"})
+    return pd.concat([Qframe, pd.Series(Qframe["Count"] / df.shape[0], name="Q")], axis=1)
+{%endhighlight%}
 </p>
 
