@@ -100,4 +100,4 @@ def epoch(self, alpha, start_theta = None):
     return go(start_theta, 0)
 {%endhighlight%}
 </p>
-<h3>Gaussian Discriminant Analysis (GDA)</h3>
+
