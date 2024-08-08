@@ -19,6 +19,6 @@ P(y|x) = \dfrac{P(x|y)P(y)}{P(x)}
 </p>
 
 <p>
-If we are given training data, we calculate the probability of each class \(P(y) = \frac{\text{\# of samples of class y}}{\text{\# of samples in the data set}}}\).
+If we are given training data, we calculate the probability of each class \(P(y) = \frac{\text{# of samples of class y}}{\text{# of samples in the data set}}\).
 </p>
 
