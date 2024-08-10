@@ -63,6 +63,6 @@ def predicted_class(self, x):
 </p>
 <h3>Gaussian Discriminant Analysis (GDA)</h3>
 <p>
-For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n}.\)
+For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n} for j in [1..d], and we find the covariance matrix \(\Sigma \in \mathbb{R}^{d\times d}\) such that \(\Sigma_{ij} = E[(X_i - \mu_i)^{\intercal}(X_j - \mu_j)]\).
 </p>
 
