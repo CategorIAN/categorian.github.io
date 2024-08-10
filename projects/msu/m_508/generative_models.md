@@ -63,7 +63,22 @@ def predicted_class(self, x):
 </p>
 <h3>Gaussian Discriminant Analysis (GDA)</h3>
 <p>
-For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n}\) for j in [1..d], and we find the covariance matrix \(\Sigma \in \mathbb{R}^{d\times d}\) such that \(\Sigma_{ij} = E[(X_i - \mu_i)^{\intercal}(X_j - \mu_j)]\) for i, j in [1..d].
+For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n}\) for j in [1..d], and we find the covariance matrix \(\Sigma \in \mathbb{R}^{d\times d}\) such that \(\Sigma_{ij} = E[(X_i - \mu_i)^{\intercal}(X_j - \mu_j)]\) for i, j in [1..d]. Code to compute the covariance matrix is shown below:
+{%highlight python linenos%}
+def covMat_Components(self):
+    '''
+    :return: The invertible covariance matrix based on nonzero-variance components along with those components
+    '''
+    def addMatrix(m, i):
+        #print("-----------------------------")
+        #print("i: {}".format(i))
+        v = self.X[i] - self.mu_dict[self.data.target(i)]
+        return m + np.outer(v, v)
+    M = reduce(addMatrix, range(self.n), np.zeros((self.d, self.d))) / self.n
+    alpha = 0.5
+    nonzero_comps = list(self.filter(pd.Series(range(self.d)), lambda i: np.linalg.norm(M[i, :]) > (10 ** alpha)))
+    return M[np.ix_(nonzero_comps, nonzero_comps)], nonzero_comps
+{%endhighlight%}
 </p>
 
 <p>
@@ -78,7 +93,17 @@ For it to be a generative model, we want to find for a given class \(y\), we wan
 \[
 \mu(y)_j = \dfrac{\sum_{i\in S_y} x^{(i)}_j}{|S_y|},
 \]
-where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\). Thus, for the training data, we need to calculate \(\mu(y)\) for each class \(y\). Then, for an example in the test set with feature vector \(x\), the conditional probability is calculated as \(P(x|y) = P(x;\mu(y), \Sigma)\). Code to compute the conditional probability with the GDA model is shown below:
+where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\). Thus, for the training data, we need to calculate \(\mu(y)\) for each class \(y\). Code to compute this vector for a given class is shown below:
+{%highlight python linenos%}
+def mu(self, cl):
+    '''
+    :param cl: The class
+    :return: The average feature value per feature within the class
+    '''
+    return np.array(self.data.df.loc[lambda df: df[self.data.target_name] == cl][self.data.features].mean())
+{%endhighlight%}
+
+Then, for an example in the test set with feature vector \(x\), the conditional probability is calculated as \(P(x|y) = P(x;\mu(y), \Sigma)\). Code to compute the conditional probability with the GDA model is shown below:
 {%highlight python linenos%}
 def cond_prob_func(self, cl, x):
     '''
