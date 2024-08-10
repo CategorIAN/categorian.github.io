@@ -73,3 +73,11 @@ Once we have the mean vector and the covariance matrix, we then calculate the pr
 \]
 </p>
 
+<p>
+For it to be a generative model, we want to find for a given class \(y\), we want to find the probability of an example having the feature vector \(x\) given class \(y\), \(P(x|y)\). To find this probability, instead of using \(\mu\), we use \(\mu(y)\), which is calculated as, for each j in [1..d] 
+\[
+\mu(y)_j = \dfrac{\sum_{i\in S_y} x^{(i)}_j}{|S_y|},
+\]
+where \(S_y\) is the set of \{i\in [1..n]| y^{(i)} = y\}.
+</p>
+
