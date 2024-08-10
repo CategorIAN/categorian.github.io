@@ -78,6 +78,8 @@ For it to be a generative model, we want to find for a given class \(y\), we wan
 \[
 \mu(y)_j = \dfrac{\sum_{i\in S_y} x^{(i)}_j}{|S_y|},
 \]
-where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\).
+where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\). Then, the conditional probability is calculated as \(P(x|y) = P(x;\mu(y), \Sigma)\).
 </p>
+
+
 
