@@ -63,6 +63,13 @@ def predicted_class(self, x):
 </p>
 <h3>Gaussian Discriminant Analysis (GDA)</h3>
 <p>
-For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n}\) for j in [1..d], and we find the covariance matrix \(\Sigma \in \mathbb{R}^{d\times d}\) such that \(\Sigma_{ij} = E[(X_i - \mu_i)^{\intercal}(X_j - \mu_j)]\).
+For GDA, we assume a multivariate normal distribution of the data. Let us assume the data has \(d\) features and the training data has \(n\) examples. From the training data, we find the mean vector \(\mu \in \mathbb{R}^d\) such that \(\mu_j = \dfrac{\sum_{i=1}^n x^{(i)}_j}{n}\) for j in [1..d], and we find the covariance matrix \(\Sigma \in \mathbb{R}^{d\times d}\) such that \(\Sigma_{ij} = E[(X_i - \mu_i)^{\intercal}(X_j - \mu_j)]\) for i, j in [1..d].
+</p>
+
+<p>
+Once we have the mean vector and the covariance matrix, we then calculate the probability of an example with feature vector \(x\) to be 
+\[
+    P(x;\mu, \Sigma) = \dfrac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}}\exp(-\frac{1}{2}(x-\mu)^{\intercal}\Sigma^{-1}(x-\mu))
+\]
 </p>
 
