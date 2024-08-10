@@ -78,8 +78,20 @@ For it to be a generative model, we want to find for a given class \(y\), we wan
 \[
 \mu(y)_j = \dfrac{\sum_{i\in S_y} x^{(i)}_j}{|S_y|},
 \]
-where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\). Thus, for the training data, we need to calculate \(\mu(y)\) for each class \(y\). Then, for an example in the test set with feature vector \(x\), the conditional probability is calculated as \(P(x|y) = P(x;\mu(y), \Sigma)\).
+where \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\). Thus, for the training data, we need to calculate \(\mu(y)\) for each class \(y\). Then, for an example in the test set with feature vector \(x\), the conditional probability is calculated as \(P(x|y) = P(x;\mu(y), \Sigma)\). Code to compute the conditional probability with the GDA model is shown below:
+{%highlight python linenos%}
+def cond_prob_func(self, cl, x):
+    '''
+    :param cl: The class
+    :param x: The data features
+    :return: The probability of getting the data features given the class
+    '''
+    v = np.array(x)[self.components] - self.mu_dict[cl][self.components]
+    return np.exp(-0.5 * v @ self.Sigma_inv @ v) / ((2 * np.pi) ** (self.p / 2) * self.Sigma_det ** (1 / 2))
+{%endhighlight%}
 </p>
+
+<h3>Naive Bayes</h3>
 
 
 
