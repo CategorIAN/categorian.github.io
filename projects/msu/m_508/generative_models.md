@@ -9,6 +9,7 @@ layout: default
 <a href = "https://github.com/CategorIAN/M508_HW2">Code Repository</a>\
 [Notes on Generative Models](https://categorian.github.io/pdfs/Notes on Generative Models.pdf)\
 <a href = "https://www.kaggle.com/datasets/hojjatk/mnist-dataset/data">MNIST Data Set</a>\
+[Generative Models On The 0-1 Classes](https://categorian.github.io/pdfs/Generative Models On The 0-1 Classes.pdf)
 
 <h2>Description</h2>
 <h3>Overview</h3>
@@ -272,7 +273,7 @@ class MnistDataloader(object):
 </p>
 <h3>Error Calculated In Confusion Matrices</h3>
 <p>
-We calculated the performance of each model using a confusion matrix.
+We calculated the performance of each model using a confusion matrix. An analysis of these results can be found in the "Generative Models On The 0-1 Classes" document posted in the "References" section.
 </p>
 <h4>Confusion Matrix of GDA on MNIST</h4>
 <img src="/images/GDA CF.png" width = "500" alt="">
