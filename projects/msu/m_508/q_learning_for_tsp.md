@@ -11,3 +11,7 @@ layout: default
 [Presentation](https://categorian.github.io/pdfs/Final_Project_Slides.pdf)
 
 <h2>Description</h2>
+<h3>Introduction</h3>
+<p>
+This project was focused on an implementation and analysis of the algorithm described in the paper 
+</p>
