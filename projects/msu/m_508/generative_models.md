@@ -117,6 +117,15 @@ def cond_prob_func(self, cl, x):
 </p>
 
 <h3>Naive Bayes</h3>
-
+<p>
+Let us assume an example has class \(y\). Let \(x=[x_1, x_2, ..., x_d]\) be a feature vector. The product rule of probabilities tells us that 
+\[
+P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y, x_1)\cdot ...\cdot P(x_d|y, x_1, x_2, ..., x_{d-1}).
+\]
+The Naive Bayes assumption is that for any class \(y\), the features \(x_1, x_2, ..., x_d\) are conditionally independent on \(y\):
+\[
+P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y) \cdot ... \cdot P(x_d | y) = \prod_{j=1}^d P(x_i | y).
+\]
+</p>
 
 
