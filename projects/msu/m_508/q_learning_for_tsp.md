@@ -13,5 +13,5 @@ layout: default
 <h2>Description</h2>
 <h3>Introduction</h3>
 <p>
-This project was focused on an implementation and analysis of the algorithm described in the paper [Learning Combinatorial Optimization Algorithms over Graphs](https://categorian.github.io/pdfs/Learning Combinatorial Optimization Algorithms over Graphs.pdf)
+This project was focused on an implementation and analysis of the algorithm described in the paper [Learning Combinatorial Optimization Algorithms over Graphs](https://categorian.github.io/pdfs/Learning Combinatorial Optimization Algorithms over Graphs.pdf). This paper as well as the final report focused on the problem: "If we are given a known distribution of graphs \(\mathbb{D}\), we would like to learn heuristics on efficiently solving the TSP from graphs in \(\mathbb{D}\) that generalize to unseen instances from \(\mathbb{D}\). The way we can learn these heuristics is by Deep \(Q\)-Learning."
 </p>
