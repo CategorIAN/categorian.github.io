@@ -275,5 +275,8 @@ class MnistDataloader(object):
 We calculated the performance of each model using a confusion matrix.
 </p>
 <h4>Confusion Matrix of GDA on MNIST</h4>
-<img src="/images/segmented_line_fitting.png" width = "1000" alt="">
+<img src="/images/GDA CF.png" width = "1000" alt="">
+
+<h4>Confusion Matrix of Naive Bayes on MNIST</h4>
+<img src="/images/Naive Bayes.png" width = "1000" alt="">
 
