@@ -126,11 +126,41 @@ The Naive Bayes assumption is that for any class \(y\), the features \(x_1, x_2,
 \[
 P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y) \cdot ... \cdot P(x_d | y) = \prod_{j=1}^d P(x_j | y).
 \]
-With this assumption, we can store from the training data for each class \(y\) and for each feature--\(x_j\) for each j in [1..d]--consider all of the values of each found in the training data and compute the conditional probabilities \(P(x_j|y)\) and store them in a dataframe. Calculating \(P(x_j|y)\) is found by 
+With this assumption, we can store from the training data for each class \(y\) and for each feature value \(x_j\) for each j in [1..d] from the training data and compute the conditional probabilities \(P(x_j|y)\) and store them in a dataframe. Calculating \(P(x_j|y)\) is found by 
     \[ 
-    P(x_i|y) = \dfrac{|S_{x_j} \cap S_y|}{|S_y|},
+    P(x_j|y) = \dfrac{|S_{x_j} \cap S_y|}{|S_y|},
     \]
-where, as before, \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\), and \(S_{x_j}\) is the set of \(\{i\in [1..n]| x^{(i)}_j = x_j\}\).
+where, as before, \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\), and \(S_{x_j}\) is the set of \(\{i\in [1..n]| x^{(i)}_j = x_j\}\). The following code computes a dataframe of all of the \(P(x_j | y)\) for all feature values \(x_j\) and classes \(y\) for a given feature \(j\):
+{%highlight python linenos%}
+    def F(self, j):
+        '''
+        :param j: The index of the feature
+        :return: A dictionary that maps class-feature value tuples to probability of feature value given class
+        '''
+        target = self.data.target_name
+        grouped_df = self.data.df.groupby(by=[target, self.data.features[j]])
+        Fframe = pd.DataFrame(grouped_df[target].agg("count")).rename(columns={target: "Count"})
+        Ffunc = lambda t: (Fframe["Count"][t] + 1) / (self.Q.at[t[0], "Count"] + len(self.data.features))
+        Fcol = Fframe.index.to_series().map(Ffunc)
+        return pd.concat([Fframe, pd.Series(Fcol, name = "F")], axis = 1).to_dict()["F"]
+{%endhighlight%}
+We then can create a dictionary that maps a feature \(j\) to its dataframe of \(P(x_j|y)\) values:
+{%highlight python linenos%}
+self.Fs = dict([(j, self.F(j)) for j in range(len(self.data.features))])
+{%endhighlight%}
+</p>
+
+<p>
+Once we have this dictionary, we can then use our conditional probability function that takes a class \(y\) and feature vector \(x\) and computes \(P(x|y)\) using the Naive Bayes assumption:
+{%highlight python linenos%}
+def cond_prob_func(self, cl, x):
+    '''
+    :param cl: The class
+    :param x: The data features
+    :return: The probability of getting the data features given the class
+    '''
+    return reduce(lambda r, j: r * self.Fs[j].get((cl, x[j]), 0), range(len(self.data.features)), 1)
+{%endhighlight%}
 </p>
 
 
