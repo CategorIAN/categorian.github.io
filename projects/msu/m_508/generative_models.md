@@ -124,8 +124,13 @@ P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y, x_1)\cdot ...\cdot P(x_d|y, x_1, x_2
 \]
 The Naive Bayes assumption is that for any class \(y\), the features \(x_1, x_2, ..., x_d\) are conditionally independent on \(y\):
 \[
-P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y) \cdot ... \cdot P(x_d | y) = \prod_{j=1}^d P(x_i | y).
+P(x_1, ..., x_d|y) = P(x_1|y)\cdot P(x_2|y) \cdot ... \cdot P(x_d | y) = \prod_{j=1}^d P(x_j | y).
 \]
+With this assumption, we can store from the training data for each class \(y\) and for each feature--\(x_j\) for each j in [1..d]--consider all of the values of each found in the training data and compute the conditional probabilities \(P(x_j|y)\) and store them in a dataframe. Calculating \(P(x_j|y)\) is found by 
+    \[ 
+    P(x_i|y) = \dfrac{|S_{x_j} \cap S_y|}{|S_y|},
+    \]
+where, as before, \(S_y\) is the set of \(\{i\in [1..n]| y^{(i)} = y\}\), and \(S_{x_j}\) is the set of \(\{i\in [1..n]| x^{(i)}_j = x_j\}\).
 </p>
 
 
