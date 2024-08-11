@@ -13,5 +13,5 @@ layout: default
 <h2>Description</h2>
 <h3>Introduction</h3>
 <p>
-This project was focused on an implementation and analysis of the algorithm described in the paper 
+This project was focused on an implementation and analysis of the algorithm described in the paper [Learning Combinatorial Optimization Algorithms over Graphs](https://categorian.github.io/pdfs/Learning Combinatorial Optimization Algorithms over Graphs.pdf)
 </p>
