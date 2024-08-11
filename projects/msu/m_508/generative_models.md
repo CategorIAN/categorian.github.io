@@ -278,5 +278,5 @@ We calculated the performance of each model using a confusion matrix.
 <img src="/images/GDA CF.png" width = "500" alt="">
 
 <h4>Confusion Matrix of Naive Bayes on MNIST</h4>
-<img src="/images/NaiveBayes.png" width = "500" alt="">
+<img src="/images/NaiveBayes CF.png" width = "500" alt="">
 
