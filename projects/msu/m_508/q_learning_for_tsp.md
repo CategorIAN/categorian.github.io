@@ -148,6 +148,6 @@ def __init__(self, points, shortest_cycle = None, distance = None):
 <p>
 For a Euclidean Graph, let \(\psi_G\) be the set of permutations of \(G\). If \(S\in \psi_G\), then the tour distance of \(S\) for \(G\) is defined as 
     \[
-    \text{tourDistance}_G(S) = \mathlarger{\sum}_{i=0}^{|S|-2} w(S[i], S[i+1]) + w(S[|S|-1], S[0]).
+    \text{tourDistance}_G(S) = \sum_{i=0}^{|S|-2} w(S[i], S[i+1]) + w(S[|S|-1], S[0]).
     \]
 </p>
