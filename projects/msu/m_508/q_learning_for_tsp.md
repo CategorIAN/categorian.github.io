@@ -188,7 +188,7 @@ Then, after we compute the final hidden layer \(\mu_S^{(T)}\), where \(T\) is a 
 </p>
 
 <p>
-Our Q function depends on weights \(\Theta = [\theta_1, \theta_2, \theta_3, \theta_4, \theta_{5a}, \theta_{5b}, \theta_6, \theta_7]\), which are learned gradient descent of \(\nabla_{\Theta} J(S_{t-n}, v_{t-n}, R_{t-n, t}, S_t; \Theta)\) using values \((S_{t-n}, v_{t-n}, R_{t-n, t}, S_t)\) found from Q learning.
+Our Q function depends on weights \(\Theta = [\theta_1, \theta_2, \theta_3, \theta_4, \theta_{5a}, \theta_{5b}, \theta_6, \theta_7]\), which are learned from gradient descent of \(\nabla_{\Theta} J(S_{t-n}, v_{t-n}, R_{t-n, t}, S_t; \Theta)\) using values \((S_{t-n}, v_{t-n}, R_{t-n, t}, S_t)\) found from Q learning.
 </p>
 
 
