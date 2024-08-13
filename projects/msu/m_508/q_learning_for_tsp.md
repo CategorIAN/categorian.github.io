@@ -121,7 +121,7 @@ class CompleteGraph:
 </p>
 
 <p>
-In particular, the graphs we are focused on are Euclidean Graphs, where each vertex \(i\) is identified with a point \((x_i, y_i)\in \mathbb{R}^2\) such that the weight from vertex \(i\) to vertex \(j\) is the Euclidean distance \(||(x_j, y_j) - (x_i, y_i)||_2\). The following code is an implementation of an Euclidean Graph:
+In particular, the graphs we are focused on are Euclidean Graphs, where each vertex \(i\) is identified with a point \((x_i, y_i)\in \mathbb{R}^2\) such that the weight from vertex \(i\) to vertex \(j\) is the Euclidean distance \(||(x_j, y_j) - (x_i, y_i)||_2\). The following code is an implementation of a Euclidean Graph:
 {%highlight python linenos%}
 from CompleteGraph import CompleteGraph
 import numpy as np
@@ -143,4 +143,11 @@ def __init__(self, points, shortest_cycle = None, distance = None):
     dist_matrix = np.array([[dist(i, j) for j in range(n)] for i in range(n)])
     super().__init__(dist_matrix)
 {%endhighlight%}
+</p>
+
+<p>
+For a Euclidean Graph, let \(\psi_G\) be the set of permutations of \(G\). If \(S\in \psi_G\), then the tour distance of \(S\) for \(G\) is defined as 
+    \[
+    \text{tourDistance}_G(S) = \mathlarger{\sum}_{i=0}^{|S|-2} w(S[i], S[i+1]) + w(S[|S|-1], S[0]).
+    \]
 </p>
