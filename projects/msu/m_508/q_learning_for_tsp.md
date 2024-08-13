@@ -220,7 +220,7 @@ class EuclideanGraphDistribution:
 
 <h4>Approximation Ratio as Error</h4>
 <p>
-Our objective was to minimize \(\text{tourDistance}_G(S)\}. Let \(\hat{S}\) be a full solution for \(G\) found using our model, and let \(S^*\) be a full solution that minimizes \(\text{tourDistance}_G\). Then, the error for our prediction \(\hat{S}\) is the approximation ratio:
+Our objective was to minimize \(\text{tourDistance}_G(S)\). Let \(\hat{S}\) be a full solution for \(G\) found using our model, and let \(S^*\) be a full solution that minimizes \(\text{tourDistance}_G\). Then, the error for our prediction \(\hat{S}\) is the approximation ratio:
 \[ \rho = \dfrac{\text{cost}_G(\hat{S})}{\text{cost}_G(S^{*})} \geq 1.\]
 This is the error we calculated for each graph in the test set of each fold in our 4-fold cross-validation. Optimal solutions \(S^*\) were found using the Held-Karp algorithm described in the paper <a href = "{{ site.url }}{{ site.baseurl }}/pdfs/Boosting Dynamic Programming with Neural Networks for Solving NP-hard Problems.pdf"><i>Boosting Dynamic Programming with Neural Networks for Solving NP-hard Problems</i></a>. Implementation of the Held-Karp algorithm is shown below:
 {%highlight python linenos%}
