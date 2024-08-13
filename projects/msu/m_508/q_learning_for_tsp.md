@@ -183,6 +183,8 @@ Our embedding of node \(v\) should depend on current partial solution \(S\), the
 <p>
 The input layer of our neural network is a matrix of all zeros: \(\mu_S^{(0)}:=0_{p \times m}\). Then, going from one layer to next, the embedding of node \(v\) is found by
 \[(\mu_S^{(i+1)})_v\leftarrow \text{relu}(\theta_1 x_S[v] + \theta_2 \sum_{u\in \mathscr{N}(v)}(\mu_S^{(i)})_u + \theta_3 \sum_{u\in \mathscr{N}(v)} \text{relu}(\theta_4 w(v, u))).\]
+
+Then, after we compute the final hidden layer \(\mu_S^{(T)}\), where \(T\) is a hyperparameter to tune, our Q function is defined as \[\hat{Q}_\Theta(S, v) = \theta_{5a}^{\intercal}\text{relu}(\theta_6\sum_{u\in V}(\mu_S^{(T)})_u) + \theta_{5b}^{\intercal}\text{relu}( \theta_7(\mu_S^{(T)})_v).\]
 </p>
 
 
