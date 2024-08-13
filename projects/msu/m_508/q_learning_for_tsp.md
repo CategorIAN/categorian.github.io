@@ -322,3 +322,17 @@ class TSP_HK:
         return self.calculateWalkfromQ(G, Q_dict)
 {%endhighlight%}
 </p>
+
+<h4>Tuning Hyperparameters</h4>
+<p>
+Each Deep \(Q\)-Learning model is uniquely defined by seven hyperparameters. Among the models used in cross-validation, two values were used for each hyperparameter. Thus, error was calculated for \(2^7=128\) models, each created by choosing between \(2\) values for each of the \(7\) hyperparameters. The following are the hyperparameters used, along with the values used for each hyperparameter among models used in cross-validation:
+<ul>
+    <li>Dimension of Each Node Embedding: \(p \in \{3, 4\}\)</li>
+    <li>Number of Hidden Layers: \(T \in \{1, 2\}\)</li>
+    <li>Probability of Choosing Random \(v\in \overline{S}\) to Append to Partial Solution \(S\): \(\epsilon\in \{0.01, 0.05\}\) (See full report for more details.) </li>
+    <li>Number of Steps Between States for \(n\)-Step \(Q\)-Learning: \(n \in \{2, 3\}\) (See full report for more details.)</li>
+    <li> Learning Rate for Gradient Descent: \(\alpha \in \{0.01, 0.1\}\)  </li>
+    <li>Maximum Size of Batches for Mini-Batch Gradient Descent: \(\beta \in \{5, 10\}\) (See full report for more details.) </li>
+    <li>Discount Factor for \(Q\)-Learning: \(\gamma \in \{0.9, 1\}\) </li>
+</ul>
+</p>
