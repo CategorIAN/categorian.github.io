@@ -338,4 +338,10 @@ Each Deep \(Q\)-Learning model is uniquely defined by seven hyperparameters. Amo
             <li>Discount Factor for \(Q\)-Learning: \(\gamma \in \{0.9, 1\}\) </li>
         </ul>    
 </ul>
+According to our analysis, we found the best values for the hyperparameters to be \(p=4\), \(T=2\), \(\epsilon = 0.01\), \(n = 3\), \(\alpha = 0.1\), \(\beta = 5\), and \(\gamma = 0.9\). We considered this assignment of values to be our "best" model for the remaining analysis.
+</p>
+
+<h4>Q-Learning With "Best" Model Over 3 Episodes</h4>
+<p>
+Using our "best" model, we performed Q-Learning over 3 episodes with other distributions and created plots to visualize the graphs, their optimal paths, and their approximated paths. Let \(\mathbb{D}_m\) be the distribution of graphs with vertex set \(V\) such that \(V \subseteq [-5..5]^2\) as before, but \(|V| = m\). We performed \(Q\)-Learning over 3 episodes with distributions \(\mathbb{D}_9\), \(\mathbb{D}_{14}\), and \(\mathbb{D}_{17}\).
 </p>
