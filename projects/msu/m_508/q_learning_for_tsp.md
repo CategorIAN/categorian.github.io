@@ -150,4 +150,7 @@ For a Euclidean Graph, let \(\psi_G\) be the set of permutations of \(G\). If \(
     \[
     \text{tourDistance}_G(S) = \sum_{i=0}^{|S|-2} w(S[i], S[i+1]) + w(S[|S|-1], S[0]).
     \]
+Then, the Traveling Salesman Problem (TSP) is finding 
+\[\text{argmin}_{S\in \Psi_G}(\text{tourDistance}_G(S)).\]
 </p>
+
