@@ -164,7 +164,7 @@ For the Traveling Salesman Problem, an action corresponds to traveling to the ne
 </p>
 
 <p>
-Our Q function depends on weights \(\Theta\). We will train our Q function by adjusting our weights by minimizing the error function
+Our Q function that we use for our policy is an approximation of the ideal Q function, \(Q^*\). Our Q function depends on weights \(\Theta\), which we will train in the algorithm. Thus, our Q function is represented as an approximation \(\hat{Q}_{\Theta}\). We will train our Q function by adjusting our weights by minimizing the error function:
 \[J(S_{t-n}, v_{t-n}, R_{t-n,t}, S_t; \Theta) = \frac{1}{2}(R_{t-n, t} + \gamma \max_{v'\in \overline{S_t}} \hat{Q}_\Theta(S_t, v') - \hat{Q}_\Theta(S_{t-n}, v_{t-n}))^2.\]
 </p>
 
