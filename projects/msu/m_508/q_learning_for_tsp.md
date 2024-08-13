@@ -166,7 +166,7 @@ For the Traveling Salesman Problem, an action corresponds to traveling to the ne
 <p>
 Our Q function that we use for our policy is an approximation of the ideal Q function, \(Q^*\). Our Q function depends on weights \(\Theta\), which we will train in the algorithm. Thus, our Q function is represented as an approximation \(\hat{Q}_{\Theta}\). We will train our Q function by adjusting our weights by minimizing the error function:
 \[J(S_{t-n}, v_{t-n}, R_{t-n,t}, S_t; \Theta) = \frac{1}{2}(R_{t-n, t} + \gamma \max_{v'\in \overline{S_t}} \hat{Q}_\Theta(S_t, v') - \hat{Q}_\Theta(S_{t-n}, v_{t-n}))^2.\]
-Minimizing this function helps make \(\hat{Q}_{\Theta}(S_t, v_t) \approx R_{t, m} = c_G(S_m) - c_G(S_t)\) for each time step \(t\). Then, at each time step \(t\), we pick action  \(v^* = \text{argmax}_{v'\in\overline{S_t}} \hat{Q}_{\Theta}(S_t, v')\) in order to hopefully get \(S_m\) at the end that maximizes \(c_G\) or, equivalently, minimizes \(\text{tourDistance}_G\).
+Minimizing this function helps make \(\hat{Q}_{\Theta}(S_t, v_t) \approx R_{t, m} = c_G(S_m) - c_G(S_t)\) for each time step \(t\), where \(m\) is our final state. Then, at each time step \(t\), we pick action  \(v^* = \text{argmax}_{v'\in\overline{S_t}} \hat{Q}_{\Theta}(S_t, v')\) in order to hopefully get \(S_m\) at the end that maximizes \(c_G\) or, equivalently, minimizes \(\text{tourDistance}_G\).
 </p>
 
 
