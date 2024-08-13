@@ -180,4 +180,9 @@ where \((\mu_{S}^{(i)})_v \in \mathbb{R}^{p \times 1}\) is the embedding of node
 Our embedding of node \(v\) should depend on current partial solution \(S\), the neighbors of \(v\), labeled as \(\mathscr{N}(v)\), and the weight of edge \((v, u)\), labeled as \(w(v, u)\), for each \(u\in \mathscr{N}(v)\). To have our embedding depend on \(S\), we used the binary vector \(x_S := [1\{v \in S\}: v \in V] \in \{0, 1\}^{1 \times m}.\)
 </p>
 
+<p>
+The input layer of our neural network is a matrix of all zeros: \(\mu_S^{(0)}:=0_{p \times m}\). Then, going from one layer to next, the embedding of node \(v\) is found by
+\[(\mu_S^{(i+1)})_v\leftarrow \relu(\theta_1 x_S[v] + \theta_2 \sum_{u\in \mathscr{N}(v)}(\mu_S^{(i)})_u + \theta_3 \sum_{u\in \mathscr{N}(v)} \relu(\theta_4 w(v, u))).\]
+</p>
+
 
