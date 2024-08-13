@@ -171,9 +171,13 @@ Minimizing this function helps make \(\hat{Q}_{\Theta}(S_t, v_t) \approx R_{t, m
 
 <h3>Evaluating Q With Structure2Vec Neural Network</h3>
 <p>
-Deep Q-Learning is Q-Learning that uses a neural network to approximate the Q function. We used the <emph>structure2vec</emph> neural network. For state \(S\), the \(i^{th}\) layer of our neural network is \[\mu_{S}^{(i)} = [(\mu_{S}^{(i)})_0, (\mu_{S}^{(i)})_1, ..., (\mu_{S}^{(i)})_{m-1}]  \in \mathbb{R}^{p \times m},\]
+Deep Q-Learning is Q-Learning that uses a neural network to approximate the Q function. We used the <emph>structure2vec</emph> neural network. With \(m=|S|\), for state \(S\), the \(i^{th}\) layer of our neural network is \[\mu_{S}^{(i)} = [(\mu_{S}^{(i)})_0, (\mu_{S}^{(i)})_1, ..., (\mu_{S}^{(i)})_{m-1}]  \in \mathbb{R}^{p \times m},\]
 
 where \((\mu_{S}^{(i)})_v \in \mathbb{R}^{p \times 1}\) is the embedding of node \(v\in V\) into a \(p\)-dimensional vector, where \(p\) is a hyperparameter to tune. 
+</p>
+
+<p>
+Our embedding of node \(v\) should depend on current partial solution \(S\), the neighbors of \(v\), labeled as \(\mathscr{N}(v)\), and the weight of edge \((v, u)\), labeled as \(w(v, u)\), for each \(u\in \mathscr{N}(v)\). To have our embedding depend on \(S\), we used the binary vector \(x_S := [1\{v \in S\}: v \in V] \in \{0, 1\}^{1 \times m}.\)
 </p>
 
 
