@@ -191,4 +191,31 @@ Then, after we compute the final hidden layer \(\mu_S^{(T)}\), where \(T\) is a 
 Our Q function depends on weights \(\Theta = [\theta_1, \theta_2, \theta_3, \theta_4, \theta_{5a}, \theta_{5b}, \theta_6, \theta_7]\), which are learned from gradient descent of \(\nabla_{\Theta} J(S_{t-n}, v_{t-n}, R_{t-n, t}, S_t; \Theta)\) using values \((S_{t-n}, v_{t-n}, R_{t-n, t}, S_t)\) found from Q learning.
 </p>
 
+<h3>Data Analysis</h3>
+<h4>4-Fold Cross-Validation</h4>
+<p>
+We performed 4-Fold Cross-Validation from eight random graphs from a distribution \(\mathbb{D}\) such that the Euclidean graphs from \(\mathbb{D}\) had a vertex set \(V\) with \(|V|=9\) and \(V\subseteq [-5..5]^2\). The following is code that implemented this distribution:
+{%highlight python linenos%}
+from EuclideanGraph import EuclideanGraph
+import random
+
+class EuclideanGraphDistribution:
+    def __init__(self, pt_number_lim = (9, 9), xlim = (-5, 5), ylim = (-5, 5)):
+        '''
+        :param pt_number: the number of two-dimensional points/vertices to use
+        :param xlim: (x_min, x_max) where x_min is the min x coordinate and x_max is the max x coordinate for each point
+        :param ylim: (y_min, y_max) where y_min is the min y coordinate and y_max is the max x coordinate for each point
+        '''
+        self.pt_number_lim, self.xlim, self.ylim = pt_number_lim, xlim, ylim
+
+    def randomGraph(self):
+        '''
+        :return: a random graph from the distribution
+        '''
+        n = random.randint(*self.pt_number_lim)
+        points = [(random.randint(*self.xlim), random.randint(*self.ylim)) for i in range(n)]
+        return EuclideanGraph(points)
+{%endhighlight%}
+</p>
+
 
