@@ -154,3 +154,13 @@ Then, the Traveling Salesman Problem (TSP) is finding
 \[\text{argmin}_{S\in \Psi_G}(\text{tourDistance}_G(S)).\]
 </p>
 
+<h3>Q-Learning</h3>
+<p>
+In Q-Learning, we have a Q function that takes as input the state and an action and returns a Q value, which represents the change in our reward by picking the given action from our current state. In general, our policy at any state we are in is to pick an action that maximizes our Q value. Thus, we want our Q function to give us rewards that help us to optimize our original problem. 
+</p>
+
+<p>
+For the Traveling Salesman Problem, an action corresponds to traveling to the next node in our graph, and states correspond to the ordered sequence of nodes we have travled to so far. Our Q-Learning cost function, the function we want to maximize, is defined as \(c_G(S) = -\text{tourDistance}_G(S)\). Then, the reward of action of choosing vertex \(v\) at state \(S\) is defined as \(r(S, v) = c_G(S + [v]) - c_G(S)\)
+</p>
+
+
