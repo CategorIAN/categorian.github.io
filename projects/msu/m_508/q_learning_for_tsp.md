@@ -13,7 +13,7 @@ layout: default
 <h2>Description</h2>
 <h3>Introduction</h3>
 <p>
-This project was focused on an implementation and analysis of the algorithm described in the paper <a href = "{{ site.url }}{{ site.baseurl }}/pdfs/Learning Combinatorial Optimization Algorithms over Graphs.pdf">Paper</a>. This paper as well as the final report focused on the problem: "If we are given a known distribution of graphs \(\mathbb{D}\), we would like to learn heuristics on efficiently solving the TSP from graphs in \(\mathbb{D}\) that generalize to unseen instances from \(\mathbb{D}\). The way we can learn these heuristics is by Deep \(Q\)-Learning."
+This project was focused on an implementation and analysis of the algorithm described in the paper <a href = "{{ site.url }}{{ site.baseurl }}/pdfs/Learning Combinatorial Optimization Algorithms over Graphs.pdf">*Learning Combinatorial Optimization Algorithms over Graphs*</a>. This paper as well as the final report focused on the main idea: "If we are given a known distribution of graphs \(\mathbb{D}\), we would like to learn heuristics on efficiently solving the TSP from graphs in \(\mathbb{D}\) that generalize to unseen instances from \(\mathbb{D}\). The way we can learn these heuristics is by Deep \(Q\)-Learning."
 </p>
 <h3>The Traveling Salesman Problem</h3>
 <p>
@@ -117,5 +117,30 @@ class CompleteGraph:
         :return: a concatenation of each vertex neighbor_square along the 0th axis
         '''
         return np.concatenate([self.neighbor_square(v) for v in self.vertices], axis=0)
+{%endhighlight%}
+</p>
+
+<p>
+In particular, the graphs we are focused on are Euclidean Graphs, where each vertex \(i\) is identified with a point \((x_i, y_i)\in \mathbb{R}^2\) such that the weight from vertex \(i\) to vertex \(j\) is the Euclidean distance \(||(x_j, y_j) - (x_i, y_i)||_2\). The following code is an implementation of an Euclidean Graph:
+{%highlight python linenos%}
+from CompleteGraph import CompleteGraph
+import numpy as np
+from TSP_HK import TSP_HK
+
+class EuclideanGraph(CompleteGraph):
+def __init__(self, points, shortest_cycle = None, distance = None):
+    '''
+    :param points: the two-dimensional points to use for the graph
+    :param shortest_cycle: an optimal permutation of vertices for the TSP
+    :param distance: the minimal walk distance for the TSP
+    '''
+    self.points = points
+    self.shortest_cycle = shortest_cycle
+    self.distance = distance
+    pt_array = np.array([list(point) for point in points])
+    dist = lambda i, j: np.linalg.norm(pt_array[i, :] - pt_array[j, :])
+    n = len(pt_array)
+    dist_matrix = np.array([[dist(i, j) for j in range(n)] for i in range(n)])
+    super().__init__(dist_matrix)
 {%endhighlight%}
 </p>
