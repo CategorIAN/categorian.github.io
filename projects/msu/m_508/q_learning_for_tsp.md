@@ -345,3 +345,4 @@ According to our analysis, we found the best values for the hyperparameters to b
 <p>
 Using our "best" model, we performed Q-Learning over 3 episodes with other distributions and created plots to visualize the graphs, their optimal paths, and their approximated paths. Let \(\mathbb{D}_m\) be the distribution of graphs with vertex set \(V\) such that \(V \subseteq [-5..5]^2\) as before, but \(|V| = m\). We performed \(Q\)-Learning over 3 episodes with distributions \(\mathbb{D}_9\), \(\mathbb{D}_{14}\), and \(\mathbb{D}_{17}\).
 </p>
+<img src="/images/Graphs_0 (Learned Paths).png" width = "1000" alt="">
