@@ -464,7 +464,103 @@ Then, after we compute the final hidden layer \(\mu_S^{(T)}\), where \(T\) is a 
 </p>
 
 <p>
-Our Q function depends on weights \(\Theta = [\theta_1, \theta_2, \theta_3, \theta_4, \theta_{5a}, \theta_{5b}, \theta_6, \theta_7]\), which are learned from gradient descent of \(\nabla_{\Theta} J(S_{t-n}, v_{t-n}, R_{t-n, t}, S_t; \Theta)\) using values \((S_{t-n}, v_{t-n}, R_{t-n, t}, S_t)\) found from Q learning.
+Our Q function depends on weights \(\Theta = [\theta_1, \theta_2, \theta_3, \theta_4, \theta_{5a}, \theta_{5b}, \theta_6, \theta_7]\), which are learned from gradient descent of \(\nabla_{\Theta} J(S_{t-n}, v_{t-n}, R_{t-n, t}, S_t; \Theta)\) using values \((S_{t-n}, v_{t-n}, R_{t-n, t}, S_t)\) found from Q learning. The following is an implementation of the neural network:
+{%highlight python linenos%}
+def x(self, G, S):
+    '''
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :return: vector of binary values showing which vertices in G are in S
+    '''
+    return np.vectorize(lambda i: int(i in S))(G.vertices)
+    
+def relu(self, v):
+    '''
+    :param v: vector
+    :return: vector showing the element-wise relu values of v
+    '''
+    return np.vectorize(lambda i: max(0, i))(v)
+    
+def F(self, Theta, G, S):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :return: function that takes a list of mu's and returns that list with an appended next mu
+    '''
+    x = self.x(G, S)
+    def new_mu_list(mu_list):
+    mu = mu_list[-1]
+    r1 = np.outer(Theta.theta_1, x)
+    r2 = Theta.theta_2 @ mu @ G.N
+    r3 = Theta.theta_3 @ self.relu(np.outer(Theta.theta_4, G.W)) @ G.U
+    return mu_list + [self.relu(r1 + r2 + r3)]
+    return new_mu_list
+    
+def mu_list_final(self, Theta, G, S):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :return: final list of mu matrices
+    '''
+    F_func = self.F(Theta, G, S)
+    mu_recurse = lambda mu_list, t: mu_list if t == self.T else mu_recurse(F_func(mu_list), t + 1)
+    return mu_recurse([np.zeros((Theta.p, G.n))], 0)
+    
+def Q_vec_mu_list(self, Theta, G, S):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :return: a tuple of the Q vector for S and the mu list used to calculate Q vector
+    '''
+    mu_list = self.mu_list_final(Theta, G, S)
+    mu = mu_list[-1]
+    r1 = Theta.theta_5a.reshape(1, -1) @ self.relu(Theta.theta_6 @ mu @ np.ones((G.n, G.n)))
+    r2 = Theta.theta_5b.reshape(1, -1) @ self.relu(Theta.theta_7 @ mu)
+    return (r1 + r2)[0], mu_list
+def S_not(self, G, S):
+    '''
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :return: set of vertices in G but not in S
+    '''
+    return set(G.vertices).difference(S)
+
+def policy(self, Theta, G, S, S_not = None):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :param S_not: (optional) set of vertices in G but not in S (to speed up calculation)
+    :return: ((v, Q), mu_list) where (v, Q) is the (argmax, max) of the Q vector and mu_list was used for Q vector
+    '''
+    S_not = self.S_not(G, S) if S_not is None else S_not
+    Qvec, mu_list = self.Q_vec_mu_list(Theta, G, S)
+    vQs = [(v, Qvec[v]) for v in S_not]
+    return reduce(lambda t1, t2: t2 if t1[0] is None or t2[1] > t1[1] else t1, vQs, (None, 0)), mu_list
+
+def vBest(self, Theta, G, S, S_not = None):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :param S_not: (optional) set of vertices in G but not in S (to speed up calculation)
+    :return: the best vertex to append to S if S_not is nonempty else None
+    '''
+    return self.policy(Theta, G, S, S_not)[0][0]
+
+def QBest(self, Theta, G, S, S_not = None):
+    '''
+    :param Theta: object consisting of list of theta weights
+    :param G: graph
+    :param S: list of unique vertices of graph
+    :param S_not: (optional) set of vertices in G but not in S (to speed up calculation)
+    :return: Q value of the best vertex to append to S if S_not is nonempty else 0
+    '''
+    return self.policy(Theta, G, S, S_not)[0][1]
+{%endhighlight%}
 </p>
 
 <h3>Data Analysis</h3>
