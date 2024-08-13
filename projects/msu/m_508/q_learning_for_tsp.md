@@ -169,4 +169,11 @@ Our Q function that we use for our policy is an approximation of the ideal Q fun
 Minimizing this function helps make \(\hat{Q}_{\Theta}(S_t, v_t) \approx R_{t, m} = c_G(S_m) - c_G(S_t)\) for each time step \(t\), where \(m\) is our final state. Then, at each time step \(t\), we pick action  \(v^* = \text{argmax}_{v'\in\overline{S_t}} \hat{Q}_{\Theta}(S_t, v')\) in order to hopefully get \(S_m\) at the end that maximizes \(c_G\) or, equivalently, minimizes \(\text{tourDistance}_G\).
 </p>
 
+<h3>Evaluating Q With Structure2Vec Neural Network</h3>
+<p>
+Deep Q-Learning is Q-Learning that uses a neural network to approximate the Q function. We used the <emph>structure2vec</emph> neural network. For state \(S\), the \(i^{th}\) layer of our neural network is \[\mu_{S}^{(i)} = [(\mu_{S}^{(i)})_0, (\mu_{S}^{(i)})_1, ..., (\mu_{S}^{(i)})_{m-1}]  \in \mathbb{R}^{p \times m},\]
+
+where \((\mu_{S}^{(i)})_v \in \mathbb{R}^{p \times 1}\) is the embedding of node \(v\in V\) into a \(p\)-dimensional vector, where \(p\) is a hyperparameter to tune. 
+</p>
+
 
