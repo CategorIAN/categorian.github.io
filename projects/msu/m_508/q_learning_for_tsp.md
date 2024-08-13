@@ -163,4 +163,9 @@ In Q-Learning, we have a Q function that takes as input the state and an action 
 For the Traveling Salesman Problem, an action corresponds to traveling to the next node in our graph, and states correspond to the ordered sequence of nodes we have travled to so far. Our Q-Learning cost function, the function we want to maximize, is defined as \(c_G(S) = -\text{tourDistance}_G(S)\). Then, the reward of action of choosing vertex \(v\) at state \(S\) is defined as \(r(S, v) = c_G(S + [v]) - c_G(S)\). Furthermore, we keep note of cumulative rewards from state \((t-n)\) to state \(t\) as \(R_{t-n, t} = \sum_{i=0}^{n-1} r(S_{t-n+i}, v_{t-n+i})\).
 </p>
 
+<p>
+Our Q function depends on weights \(\Theta\). We will train our Q function by adjusting our weights by minimizing the error function
+\[J(S_{t-n}, v_{t-n}, R_{t-n,t}, S_t; \Theta) = \frac{1}{2}(R_{t-n, t} + \gamma \max_{v'\in \overline{S_t}} \hat{Q}_\Theta(S_t, v') - \hat{Q}_\Theta(S_{t-n}, v_{t-n}))^2.\]
+</p>
+
 
