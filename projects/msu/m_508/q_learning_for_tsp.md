@@ -330,11 +330,11 @@ Each Deep \(Q\)-Learning model is uniquely defined by seven hyperparameters. Amo
     <li>Dimension of Each Node Embedding: \(p \in \{3, 4\}\)</li>
     <li>Number of Hidden Layers: \(T \in \{1, 2\}\)</li>
     <li>Learning Rate for Gradient Descent: \(\alpha \in \{0.01, 0.1\}\)</li>
-    <li> See full report for more details: <li>
+    <li> See full report for more details: </li>
         <ul>
             <li>Probability of Choosing Random \(v\in \overline{S}\) to Append to Partial Solution \(S\): \(\epsilon\in \{0.01, 0.05\}\)</li>
             <li>Number of Steps Between States for \(n\)-Step \(Q\)-Learning: \(n \in \{2, 3\}\)</li>
-            <li>Maximum Size of Batches for Mini-Batch Gradient Descent: \(\beta \in \{5, 10\}\) (See full report for more details.) </li>
+            <li>Maximum Size of Batches for Mini-Batch Gradient Descent: \(\beta \in \{5, 10\}\)</li>
             <li>Discount Factor for \(Q\)-Learning: \(\gamma \in \{0.9, 1\}\) </li>
         </ul>    
 </ul>
